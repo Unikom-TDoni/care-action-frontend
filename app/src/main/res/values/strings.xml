@@ -1,0 +1,63 @@
+<resources>
+    <!-- Core -->
+    <string name="app_name">CareAction</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Error Message -->
+    <string name="activity_not_found_error_message">Activity cannot be null</string>
+
+    <!-- Login -->
+    <string name="txt_login_tittle">Login</string>
+    <string name="btn_login">Login</string>
+    <string name="txt_login_link">Already have an account? Login</string>
+    <string name="txt_field_email_hint">Email</string>
+    <string name="txt_field_password_hint">Password</string>
+
+    <!-- Error Message -->
+    <string name="email_required_error_message">Field email perlu di isi terlebih dahulu</string>
+    <string name="email_format_not_valid_error_message">Silahkan masukan format email yang tepat</string>
+    <string name="password_required_error_message">Field password perlu di isi terlebih dahulu</string>
+    <string name="password_length_below_minimum_error_message">Password harus memiliki minimal 8 character</string>
+
+    <!-- Register -->
+    <string name="txt_register_tittle">Create an account</string>
+    <string name="btn_register">Register</string>
+    <string name="txt_register_link">Don\’t have an account yet? Register</string>
+    <string name="txt_field_name_hint">Name</string>
+    <string name="check_box_policy_hint">By continuing you accept our Privacy Policy and Term of Use</string>
+
+    <!-- Error Message -->
+    <string name="name_required_error_message">Field name perlu di isi terlebih dahulu</string>
+    <string name="name_below_minimum_error_message">Name harus memiliki minimal 8 character</string>
+    <string name="policy_required_error_message">Perlu menyetujui policy kita</string>
+
+    <!-- Profile -->
+    <string name="txt_profile_tittle">Let\’s Complete Your Profile</string>
+    <string name="txt_field_weight_hint">Weight</string>
+    <string name="txt_field_height_hint">Height</string>
+    <string name="txt_field_date_of_birth_hint">DD/MM/YYYY</string>
+    <string name="spinner_gender_prompt">Choose Gender</string>
+    <string-array name="gender_items">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <!-- Error Message -->
+    <string name="gender_required_error_message">Perlu memilih gender terlebih dahulu</string>
+    <string name="weight_required_error_message">Field Weight perlu diisi terlebih dahulu</string>
+    <string name="height_required_error_message">Field Height perlu diisi terlebih dahulu</string>
+    <string name="date_of_birth_required_error_message">Field Birth Of Birth perlu diisi terlebih dahulu</string>
+
+    <!-- Welcome -->
+    <string-array name="txt_welcome_title">
+        <item>Stay Fit With Us</item>
+        <item>Get Burn</item>
+        <item>Eat Well</item>
+    </string-array>
+
+    <string-array name="welcome_content">
+        <item>We want to make you always doing healthy lifestyle for a better life</item>
+        <item>Let\'s Keep Burning, to get better living in health. Get your body goals</item>
+        <item>Start implementing a balanced diet, healthy eating is fun. Prep your own meal</item>
+    </string-array>
+</resources>

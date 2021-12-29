@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="HeadingOneText" parent="Widget.AppCompat.TextView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/txt_heading_one_size</item>
+    </style>
+
+    <style name="HeadingTwoText" parent="Widget.AppCompat.TextView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/txt_heading_two_size</item>
+    </style>
+
+    <style name="ContentText" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/txt_content_size</item>
+    </style>
+
+    <style name="EditTextWithIcon" parent="Widget.AppCompat.EditText">
+        <item name="android:textSize">@dimen/txt_field_txt_size</item>
+        <item name="android:padding">@dimen/txt_field_bg_padding</item>
+        <item name="android:background">@drawable/bg_txt_field_state</item>
+        <item name="android:minHeight">@dimen/txt_field_min_height</item>
+        <item name="android:drawablePadding">@dimen/txt_field_drawable_start_space</item>
+    </style>
+
+</resources>
