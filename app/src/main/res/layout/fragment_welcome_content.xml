@@ -4,31 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".feature.welcome.presentation.fragment.WelcomeContentViewBindingFragment">
+    android:background="@android:color/white"
+    tools:context=".feature.support.welcome.WelcomeContentViewBindingFragment">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="@fraction/guideline_left_padding" />
+        app:layout_constraintGuide_percent="@fraction/normal_guideline_left_point" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="@fraction/guideline_right_padding" />
+        app:layout_constraintGuide_percent="@fraction/normal_guideline_right_point" />
 
     <TextView
         android:id="@+id/txt_view_tittle"
-        style="@style/HeadingOneText"
+        style="@style/textHeadingOne"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="320dp"
         android:layout_marginBottom="10dp"
-        android:text="@string/hello_blank_fragment"
+        android:text="@string/hello_world"
         app:layout_constraintBottom_toTopOf="@+id/txt_view_content"
         app:layout_constraintEnd_toEndOf="@id/guideline_right"
         app:layout_constraintStart_toStartOf="@id/guideline_left"
@@ -37,10 +37,10 @@
 
     <TextView
         android:id="@+id/txt_view_content"
-        style="@style/ContentText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/txt_field_height_hint"
+        android:text="@string/hello_world"
+        android:textSize="@dimen/txt_small_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/guideline_right"
         app:layout_constraintStart_toStartOf="@id/guideline_left"

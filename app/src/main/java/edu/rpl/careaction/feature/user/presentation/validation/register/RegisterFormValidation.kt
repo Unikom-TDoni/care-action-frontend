@@ -21,7 +21,7 @@ class RegisterFormValidation(
 
         val elementValidationResult = mapOf(
             R.id.txt_field_name to validateName(name),
-            R.id.check_box_policy to validatePolicy(policy),
+            R.id.check_box to validatePolicy(policy),
             R.id.txt_field_email to userEmailPasswordValidation.validateEmail(email),
             R.id.txt_field_password to userEmailPasswordValidation.validatePassword(password),
         )
@@ -42,7 +42,7 @@ class RegisterFormValidation(
 
     private fun validateName(name: String) = when {
         name.isBlank() -> FormElementValidationResult.Error(R.string.name_required_error_message)
-        name.length < 5 -> FormElementValidationResult.Error(R.string.name_below_minimum_error_message)
+        name.length < 3 -> FormElementValidationResult.Error(R.string.name_below_minimum_error_message)
         else -> FormElementValidationResult.Success(name)
     }
 

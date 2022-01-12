@@ -1,23 +1,22 @@
 package edu.rpl.careaction.feature.task.presentation.fragment
 
+import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
+import android.view.View
+import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.viewbinding.ViewBinding
-import dagger.hilt.android.AndroidEntryPoint
-import edu.rpl.careaction.databinding.FragmentLoginBinding
+import edu.rpl.careaction.R
+import edu.rpl.careaction.databinding.FragmentMenuTaskBinding
 import edu.rpl.careaction.feature.task.presentation.TaskViewModel
 import edu.rpl.careaction.module.ui.ViewBindingFragment
 
-@AndroidEntryPoint
-class TaskViewBindingFragment(
-    override val bindingInflater: (LayoutInflater) -> ViewBinding
-) : ViewBindingFragment<FragmentLoginBinding>() {
+class TaskViewBindingFragment : ViewBindingFragment<FragmentMenuTaskBinding>() {
 
-    private val taskViewModel: TaskViewModel by activityViewModels()
+    override val bindingInflater: (LayoutInflater) -> ViewBinding = FragmentMenuTaskBinding::inflate
 
-    private fun a(){
-        taskViewModel.a()
+    private val taskViewModel: TaskViewModel by hiltNavGraphViewModels(R.id.menu_nav_graph)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
-
 }

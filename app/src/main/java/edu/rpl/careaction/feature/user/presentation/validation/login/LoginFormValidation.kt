@@ -14,7 +14,7 @@ class LoginFormValidation(
 
     @Suppress("UNCHECKED_CAST")
     override fun validated(): FormValidationResult<LoginRequest> {
-        val email =  element.emailEditText.text.toString()
+        val email = element.emailEditText.text.toString()
         val password = element.passwordEditText.text.toString()
 
         val elementValidationResult = mapOf(

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/application_nav_graph"
+    app:startDestination="@id/welcome_nav_graph">
+
+    <include app:graph="@navigation/welcome_nav_graph" />
+
+    <fragment
+        android:id="@+id/mainMenuViewBindingFragment"
+        android:name="edu.rpl.careaction.feature.support.menu.MainMenuViewBindingFragment"
+        android:label="fragment_main_menu"
+        tools:layout="@layout/fragment_main_menu" />
+
+    <fragment
+        android:id="@+id/errorViewBindingFragment"
+        android:name="edu.rpl.careaction.feature.support.error.ErrorViewBindingFragment"
+        android:label="fragment_error"
+        tools:layout="@layout/fragment_error">
+        <argument
+            android:name="error"
+            app:argType="edu.rpl.careaction.feature.support.error.ErrorParcelable" />
+    </fragment>
+
+    <action
+        android:id="@+id/action_to_errorViewBindingFragment"
+        app:destination="@+id/errorViewBindingFragment"/>
+
+    <action
+        android:id="@+id/action_to_mainMenuViewBindingFragment"
+        app:destination="@+id/mainMenuViewBindingFragment"
+        app:popUpTo="@+id/application_nav_graph"
+        app:popUpToInclusive="true" />
+
+</navigation>

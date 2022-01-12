@@ -1,81 +1,99 @@
 package edu.rpl.careaction.feature.user.data
 
+import edu.rpl.careaction.core.helper.GsonMapperHelper
+import edu.rpl.careaction.core.utility.DateUtility
 import edu.rpl.careaction.feature.user.data.dao.UserLocalDataSource
 import edu.rpl.careaction.feature.user.data.dao.UserRemoteDataSource
 import edu.rpl.careaction.feature.user.domain.dto.request.LoginRequest
-import edu.rpl.careaction.feature.user.domain.dto.request.ProfileRequest
+import edu.rpl.careaction.feature.user.domain.dto.request.RegisterProfileRequest
 import edu.rpl.careaction.feature.user.domain.dto.request.RegisterRequest
+import edu.rpl.careaction.feature.user.domain.dto.response.UserResponse
 import edu.rpl.careaction.feature.user.domain.dto.response.toUser
 import edu.rpl.careaction.feature.user.domain.entity.User
 import edu.rpl.careaction.module.api.ApiResult
-import kotlinx.coroutines.flow.Flow
+import edu.rpl.careaction.module.api.ErrorResponse
+import edu.rpl.careaction.module.api.FlowApiBuilder
+import edu.rpl.careaction.module.domain.Repository
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import okhttp3.ResponseBody
 import javax.inject.Inject
 
 class UserRepository @Inject constructor(
     private val userLocalDataSource: UserLocalDataSource,
-    private val userRemoteDataSource: UserRemoteDataSource
-) {
-    suspend fun login(loginRequest: LoginRequest): Flow<ApiResult<User, String>> =
-        flow {
-            emit(ApiResult.Loading())
-            val response = userRemoteDataSource.login(loginRequest)
-            when {
-                response.isSuccessful -> {
-                    response.body()?.let {
-                        val userEntity = it.toUser()
-                        userLocalDataSource.saveUser(userEntity)
-                        emit(ApiResult.Success(userEntity))
-                    } ?: emit(ApiResult.Error("Can't get body"))
-                }
-                else -> emit(ApiResult.Error("Can't get body"))
-            }
-        }
+    private val userRemoteDataSource: UserRemoteDataSource,
+) : Repository() {
+    override val defaultDispatcher: CoroutineDispatcher = Dispatchers.IO
 
-    suspend fun logout(): Flow<ApiResult<ResponseBody, String>> =
-        flow {
-            emit(ApiResult.Loading())
-            val response = userRemoteDataSource.logout(userLocalDataSource.loadUser().token)
-            when {
-                response.isSuccessful -> {
-                    response.body()?.let {
-                        userLocalDataSource.logout()
-                        emit(ApiResult.Success(it))
-                    } ?: emit(ApiResult.Error("Can't get body"))
-                }
-                else -> emit(ApiResult.Error("Can't get body"))
+    fun login(request: LoginRequest) =
+        FlowApiBuilder<User, ErrorResponse, UserResponse>()
+            .setApiCall { userRemoteDataSource.login(request) }
+            .setDefaultErrorResponseInstance(ErrorResponse())
+            .setManageApiSuccessResponse {
+                val userEntity = it.toUser()
+                userLocalDataSource.save(userEntity)
+                userEntity
             }
-        }
+            .setManageApiErrorResponse { onApiResponseError(it) }
+            .setCoroutineContext(defaultDispatcher).build()
 
-    suspend fun register(registerRequest: RegisterRequest): Flow<ApiResult<User, String>> =
-        flow {
-            emit(ApiResult.Loading())
-            val response = userRemoteDataSource.register(registerRequest)
-            when {
-                response.isSuccessful -> {
-                    response.body()?.let {
-                        val userEntity = it.toUser()
-                        userLocalDataSource.saveUser(userEntity)
-                        emit(ApiResult.Success(userEntity))
-                    } ?: emit(ApiResult.Error("Can't get body"))
-                }
-                else -> emit(ApiResult.Error("Can't get body"))
+    fun logout() =
+        FlowApiBuilder<ResponseBody, ErrorResponse, ResponseBody>()
+            .setApiCall { userRemoteDataSource.logout(userLocalDataSource.load()!!.token) }
+            .setDefaultErrorResponseInstance(ErrorResponse())
+            .setManageApiSuccessResponse {
+                userLocalDataSource.logout()
+                it
             }
-        }
+            .setManageApiErrorResponse { onApiResponseError(it) }
+            .setCoroutineContext(defaultDispatcher).build()
 
-    suspend fun update(profileRequest: ProfileRequest): Flow<ApiResult<ResponseBody, String>> =
-        flow {
-            emit(ApiResult.Loading())
-            val response =
-                userRemoteDataSource.update(profileRequest, userLocalDataSource.loadUser().token)
-            when {
-                response.isSuccessful -> {
-                    response.body()?.let {
-                        emit(ApiResult.Success(it))
-                    } ?: emit(ApiResult.Error("Can't get body"))
-                }
-                else -> emit(ApiResult.Error("Can't get body"))
+    fun register(request: RegisterRequest) =
+        FlowApiBuilder<User, ErrorResponse, UserResponse>()
+            .setApiCall { userRemoteDataSource.register(request) }
+            .setDefaultErrorResponseInstance(ErrorResponse())
+            .setManageApiSuccessResponse {
+                val userEntity = it.toUser()
+                userLocalDataSource.save(userEntity)
+                userEntity
             }
-        }
+            .setManageApiErrorResponse { onApiResponseError(it) }
+            .setCoroutineContext(defaultDispatcher).build()
+
+    fun update(request: RegisterProfileRequest) =
+        FlowApiBuilder<ResponseBody, ErrorResponse, ResponseBody>()
+            .setApiCall {
+                userRemoteDataSource.update(
+                    request,
+                    userLocalDataSource.load()!!.token
+                )
+            }
+            .setDefaultErrorResponseInstance(ErrorResponse())
+            .setManageApiSuccessResponse {
+                val userEntity = userLocalDataSource.load()!!.copy(
+                    weight = request.weight,
+                    height = request.height,
+                    gender = request.gender,
+                    birthDate = request.birthdate,
+                    age = DateUtility.generateAgeFromDate(request.birthdate)
+                )
+                userLocalDataSource.save(userEntity)
+                it
+            }
+            .setManageApiErrorResponse { onApiResponseError(it) }
+            .setCoroutineContext(defaultDispatcher).build()
+
+    fun fetch() = flow {
+        val response = userLocalDataSource.load()
+        if (response == null) emit(ApiResult.Error<User, ErrorResponse>(ErrorResponse()))
+        else emit(ApiResult.Success(response))
+    }.flowOn(defaultDispatcher)
+
+    private fun onApiResponseError(responseBody: ResponseBody) =
+        GsonMapperHelper.mapToDto(
+            responseBody.charStream(),
+            ErrorResponse::class.java
+        )
 }

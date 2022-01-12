@@ -1,9 +1,9 @@
 package edu.rpl.careaction.core.utility
 
+import edu.rpl.careaction.R
 import android.widget.EditText
 import androidx.core.widget.doOnTextChanged
 import com.google.android.material.textfield.TextInputLayout
-import edu.rpl.careaction.R
 
 class TextFieldErrorUtility {
 
@@ -23,4 +23,5 @@ class TextFieldErrorUtility {
             textFieldElements.second.setBackgroundResource(R.drawable.bg_txt_field_state_error)
         }
     }
+
 }

@@ -1,25 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="HeadingOneText" parent="Widget.AppCompat.TextView">
+    <!-- Text -->
+    <style name="textHeadingOne" parent="Widget.AppCompat.TextView">
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">@dimen/txt_heading_one_size</item>
+        <item name="android:textSize">@dimen/txt_extra_large_size</item>
     </style>
 
-    <style name="HeadingTwoText" parent="Widget.AppCompat.TextView">
+    <style name="textHeadingTwo" parent="Widget.AppCompat.TextView">
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">@dimen/txt_heading_two_size</item>
+        <item name="android:textSize">@dimen/txt_large_size</item>
     </style>
 
-    <style name="ContentText" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">@dimen/txt_content_size</item>
+    <style name="textHeadingThree" parent="Widget.AppCompat.TextView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/txt_medium_size</item>
     </style>
 
-    <style name="EditTextWithIcon" parent="Widget.AppCompat.EditText">
-        <item name="android:textSize">@dimen/txt_field_txt_size</item>
-        <item name="android:padding">@dimen/txt_field_bg_padding</item>
-        <item name="android:background">@drawable/bg_txt_field_state</item>
+    <style name="circular">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="roundedSquare">
+        <item name="cornerSize">8%</item>
+    </style>
+
+    <style name="editTextWithIcon" parent="Widget.AppCompat.EditText">
+        <item name="android:textSize">@dimen/txt_tiny_size</item>
+        <item name="android:padding">@dimen/card_default_padding</item>
         <item name="android:minHeight">@dimen/txt_field_min_height</item>
+        <item name="android:background">@drawable/bg_txt_field_state</item>
         <item name="android:drawablePadding">@dimen/txt_field_drawable_start_space</item>
     </style>
-
 </resources>

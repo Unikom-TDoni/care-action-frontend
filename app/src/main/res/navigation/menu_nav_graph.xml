@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/menu_nav_graph"
+    app:startDestination="@id/homeViewBindingFragment">
+
+    <fragment
+        android:id="@+id/homeViewBindingFragment"
+        android:name="edu.rpl.careaction.feature.support.menu.home.presentation.HomeViewBindingFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_menu_home" />
+    <fragment
+        android:id="@+id/healthyLifestyleRoutineViewBindingFragment"
+        android:name="edu.rpl.careaction.feature.task.presentation.fragment.HealthyLifestyleRoutineViewBindingFragment"
+        android:label="fragment_menu_healthy_lifestyle_routine"
+        tools:layout="@layout/fragment_menu_healthy_lifestyle_routine" />
+    <fragment
+        android:id="@+id/profileViewBindingFragment"
+        android:name="edu.rpl.careaction.feature.user.presentation.fragment.ProfileViewBindingFragment"
+        android:label="fragment_menu_profile"
+        tools:layout="@layout/fragment_menu_profile" />
+</navigation>

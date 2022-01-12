@@ -4,17 +4,15 @@ import java.util.*
 
 data class User(
     val age: Int?,
+    val icon: String?,
     val height: Int?,
     val weight: Int?,
-    val gender: String?,
-    val birthDate: Date?,
     val name: String,
     val email: String,
-    val token: String
+    val token: String,
+    val gender: String?,
+    val birthDate: Date?,
 ){
-    fun isLoggedIn() =
-        token.isNotBlank()
-
     fun isHaveCompleteProfile() =
-        weight == null || height == null || age == null || birthDate == null
+        weight != null && height != null && gender != null && birthDate != null
 }

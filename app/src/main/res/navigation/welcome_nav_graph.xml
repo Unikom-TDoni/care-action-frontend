@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/welcome_nav_graph"
+    app:startDestination="@id/welcomeViewBindingFragment">
+
+    <fragment
+        android:id="@+id/registerViewBindingFragment"
+        android:name="edu.rpl.careaction.feature.user.presentation.fragment.RegisterViewBindingFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_registerViewBindingFragment_to_loginViewBindingFragment"
+            app:destination="@id/loginViewBindingFragment" />
+        <action
+            android:id="@+id/action_registerViewBindingFragment_to_registerProfileViewBindingFragment"
+            app:destination="@id/registerProfileViewBindingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginViewBindingFragment"
+        android:name="edu.rpl.careaction.feature.user.presentation.fragment.LoginViewBindingFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginViewBindingFragment_to_registerViewBindingFragment"
+            app:destination="@id/registerViewBindingFragment"
+            app:popUpTo="@id/welcome_nav_graph"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginViewBindingFragment_to_registerProfileViewBindingFragment"
+            app:destination="@id/registerProfileViewBindingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerProfileViewBindingFragment"
+        android:name="edu.rpl.careaction.feature.user.presentation.fragment.RegisterProfileViewBindingFragment"
+        android:label="fragment_register_profile_form"
+        tools:layout="@layout/fragment_register_profile">
+    </fragment>
+    <fragment
+        android:id="@+id/welcomeViewBindingFragment"
+        android:name="edu.rpl.careaction.feature.support.welcome.WelcomeViewBindingFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome">
+        <action
+            android:id="@+id/action_welcomeViewBindingFragment_to_registerViewBindingFragment"
+            app:destination="@id/registerViewBindingFragment"
+            app:popUpTo="@+id/welcome_nav_graph"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_welcomeViewBindingFragment_to_registerProfileViewBindingFragment"
+            app:destination="@id/registerProfileViewBindingFragment"
+            app:popUpTo="@+id/welcome_nav_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+</navigation>

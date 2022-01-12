@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".feature.user.presentation.fragment.RegisterProfileViewBindingFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@fraction/normal_guideline_left_point" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@fraction/normal_guideline_right_point" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_right_with_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@fraction/guideline_right_padding_with_desc" />
+
+    <TextView
+        android:id="@+id/txt_view_tittle"
+        style="@style/textHeadingOne"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/extra_extra_large_space"
+        android:text="@string/txt_view_register_profile_tittle"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/txt_layout_gender"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_layout_gender"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/medium_space"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:errorIconDrawable="@null"
+        app:hintEnabled="false"
+        app:layout_constraintBottom_toTopOf="@+id/txt_layout_date_birth"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/txt_view_tittle">
+
+        <AutoCompleteTextView
+            android:id="@+id/auto_complete_text_view_gender"
+            style="@style/editTextWithIcon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_txt_field_state"
+            android:cursorVisible="false"
+            android:drawableStart="@drawable/ic_custom_gender_24"
+            android:focusable="false"
+            android:hint="@string/spinner_gender_prompt" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_layout_date_birth"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/medium_space"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:errorIconDrawable="@null"
+        app:hintEnabled="false"
+        app:layout_constraintBottom_toTopOf="@+id/txt_layout_weight"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/txt_layout_gender">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_field_date_birth"
+            style="@style/editTextWithIcon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cursorVisible="false"
+            android:drawableStart="@drawable/ic_custom_calendar_24"
+            android:focusable="false"
+            android:hint="@string/txt_field_date_of_birth_hint" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_layout_weight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/medium_space"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:errorIconDrawable="@null"
+        app:hintEnabled="false"
+        app:layout_constraintBottom_toTopOf="@+id/txt_layout_height"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right_with_desc"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/txt_layout_date_birth">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_field_weight"
+            style="@style/editTextWithIcon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableStart="@drawable/ic_custom_weight_24"
+            android:hint="@string/txt_field_weight_hint"
+            android:inputType="numberSigned" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/kg_card_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/card_default_padding"
+        app:cardCornerRadius="@dimen/card_default_corner_radius"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/txt_layout_weight"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+        app:layout_constraintStart_toEndOf="@id/txt_layout_weight"
+        app:layout_constraintTop_toTopOf="@id/txt_layout_weight">
+
+        <TextView
+            android:id="@+id/txt_view_kg"
+            android:textSize="@dimen/txt_small_size"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/txt_view_kg"
+            android:textStyle="bold" />
+
+    </androidx.cardview.widget.CardView>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_layout_height"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/large_space"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:cardElevation="0dp"
+        app:errorIconDrawable="@null"
+        app:hintEnabled="false"
+        app:layout_constraintBottom_toTopOf="@+id/btn_main_menu"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right_with_desc"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/txt_layout_weight">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_field_height"
+            style="@style/editTextWithIcon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableStart="@drawable/ic_custom_ruler_24"
+            android:hint="@string/txt_field_height_hint"
+            android:inputType="numberSigned" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cm_card_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/card_default_padding"
+        app:cardCornerRadius="@dimen/card_default_corner_radius"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/txt_layout_height"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+        app:layout_constraintStart_toEndOf="@id/txt_layout_weight"
+        app:layout_constraintTop_toTopOf="@id/txt_layout_height">
+
+        <TextView
+            android:id="@+id/txt_view_cm"
+            android:textSize="@dimen/txt_small_size"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/txt_view_cm"
+            android:textStyle="bold" />
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btn_main_menu"
+        android:layout_width="@dimen/btn_normal_width_size"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/txt_layout_height" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

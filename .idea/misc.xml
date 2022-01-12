@@ -4,40 +4,105 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2046875" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/bg_bottom_nav_view.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/bg_btn_setting_bottom_state.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/bg_btn_setting_state.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/bg_button_setting_bottom_state.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/bg_button_setting_state.xml" value="0.21822916666666667" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/bg_circle_check_state.xml" value="0.21510416666666668" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/bg_circle_progress.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/bg_ring_progress.xml" value="0.21875" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/bg_ring_progress_big.xml" value="0.21822916666666667" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/bg_splash.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/bg_transparent.xml" value="0.215625" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/bg_txt_field.xml" value="0.37864583333333335" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/bg_txt_field_focus.xml" value="0.21145833333333333" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/bg_txt_field_state.xml" value="0.37864583333333335" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/bg_txt_field_state_error.xml" value="0.184375" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/bg_txt_field_state_focus.xml" value="0.21145833333333333" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_baseline_calendar_month_24.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_baseline_check_circle_24.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_baseline_check_circle_28.xml" value="0.18125" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.184375" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.21510416666666668" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_baseline_navigate_before_24.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_baseline_navigate_next_24.xml" value="0.184375" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_baseline_radio_button_unchecked_24.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_baseline_remove_red_eye_24.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_custom_activity_24.xml" value="0.21822916666666667" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_custom_activity_history_24.xml" value="0.21822916666666667" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_custom_calendar_24.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_custom_connection_error_24.xml" value="0.2078125" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_custom_document_24.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_custom_error_24.xml" value="0.20364583333333333" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_custom_gender_24.xml" value="0.37864583333333335" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_custom_height_24.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_custom_home_24.xml" value="0.18125" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_custom_lock_24.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_custom_mail_24.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_custom_message_24.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_custom_notif_24.xml" value="0.21822916666666667" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_custom_notification_24.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_custom_person_24.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_custom_privacy_24.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_custom_profile_24.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_custom_ruler_24.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_custom_weight_24.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_custom_workout_24.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_custome_height_24.xml" value="0.37864583333333335" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_custome_weight_24.xml" value="0.37864583333333335" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2046875" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.37864583333333335" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/ic_logo.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/sh_circle.xml" value="0.21875" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/sh_oval.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/drawable/sh_rectangle.xml" value="0.21875" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/activity_application.xml" value="0.18" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/content_main.xml" value="0.203125" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/dialog_loading.xml" value="0.16822916666666668" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragement_login.xml" value="0.22" />
-        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_complete_profile_form.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_application.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_blog_detail.xml" value="0.2" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_blog_overview.xml" value="0.19947916666666668" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_blog_repository.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_complete_profile_form.xml" value="0.33" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_error.xml" value="0.21" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_first.xml" value="0.203125" />
-        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_home.xml" value="0.26902173913043476" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_home.xml" value="0.1743659420289855" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_home_parent.xml" value="0.12" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_login.xml" value="0.25" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_main.xml" value="0.18" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_main_menu.xml" value="0.33" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_main_page.xml" value="0.1953125" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_menu_healthy_lifestyle_routine.xml" value="0.33" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_menu_home.xml" value="0.23104956268221574" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_menu_profile.xml" value="0.22" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_menu_task.xml" value="0.19895833333333332" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_profile_form_view_binding.xml" value="0.17239583333333333" />
-        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_register.xml" value="0.33" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_register.xml" value="0.5" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_register_profile.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_register_profile_form.xml" value="0.2" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_second.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_splash.xml" value="0.16822916666666668" />
-        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_welcome.xml" value="0.33" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_splash_screen.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_task.xml" value="0.19895833333333332" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_welcome.xml" value="0.22" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_welcome_content.xml" value="0.25" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/fragment_welcome_page.xml" value="0.1953125" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/item_blog_category.xml" value="0.5" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/item_blog_overview.xml" value="0.25" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/item_dropdown.xml" value="0.276268115942029" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/item_healthy_lifestyle_routine.xml" value="0.33" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/item_news_overview.xml" value="0.18795289855072464" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/item_overview_blog.xml" value="0.203125" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/view_bmi.xml" value="0.3568118628359592" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/view_splash_screen.xml" value="0.23324275362318841" />
+        <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/layout/view_splash_transition.xml" value="0.23324275362318841" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/menu/button_nav_menu.xml" value="0.203125" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2046875" />
         <entry key="..\:/Users/Theod/AndroidStudioProjects/CareAction/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2046875" />
