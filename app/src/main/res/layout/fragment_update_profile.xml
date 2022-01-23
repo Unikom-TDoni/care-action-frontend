@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".feature.user.presentation.fragment.UpdateProfileViewBindingFragment">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:contentDescription="@string/hello_world"
+            android:src="@drawable/ic_outline_photo_camera_24"
+            android:tint="@android:color/white"
+            app:fabSize="mini"
+            app:layout_anchor="@id/image"
+            app:layout_anchorGravity="bottom|right"
+            app:tint="@android:color/white" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="@fraction/normal_guideline_left_point" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="@fraction/normal_guideline_right_point" />
+
+            <ImageView
+                android:id="@+id/background"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/card_rectangle_large_height"
+                android:layout_marginBottom="@dimen/medium_space"
+                android:background="@android:color/white"
+                android:contentDescription="@string/hello_world"
+                app:layout_constraintBottom_toTopOf="@id/txt_layout_gender"
+                app:layout_constraintEnd_toEndOf="@id/guideline_right"
+                app:layout_constraintStart_toStartOf="@id/guideline_left"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/image"
+                android:layout_width="@dimen/card_square_large_size"
+                android:layout_height="@dimen/card_square_large_size"
+                android:layout_marginBottom="@dimen/tiny_space"
+                app:layout_constraintBottom_toTopOf="@id/txt_layout_name"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="@id/background"
+                app:layout_constraintStart_toStartOf="@id/background"
+                app:layout_constraintTop_toTopOf="@id/background"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:shapeAppearanceOverlay="@style/circular" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_layout_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:errorIconDrawable="@null"
+                app:hintEnabled="false"
+                app:layout_constraintBottom_toBottomOf="@+id/background"
+                app:layout_constraintEnd_toEndOf="@id/guideline_right"
+                app:layout_constraintStart_toStartOf="@id/guideline_left"
+                app:layout_constraintTop_toBottomOf="@+id/image">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_field_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:hint="@string/txt_field_name_hint" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_layout_gender"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/medium_space"
+                app:errorIconDrawable="@null"
+                app:layout_constraintBottom_toTopOf="@+id/txt_layout_date_birth"
+                app:layout_constraintEnd_toEndOf="@id/guideline_right"
+                app:layout_constraintStart_toStartOf="@id/guideline_left"
+                app:layout_constraintTop_toBottomOf="@id/background">
+
+                <AutoCompleteTextView
+                    android:id="@+id/auto_complete_text_view_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:hint="@string/spinner_gender_prompt" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_layout_date_birth"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/medium_space"
+                app:errorIconDrawable="@null"
+                app:layout_constraintBottom_toTopOf="@+id/txt_layout_weight"
+                app:layout_constraintEnd_toEndOf="@id/guideline_right"
+                app:layout_constraintStart_toStartOf="@id/guideline_left"
+
+                app:layout_constraintTop_toBottomOf="@+id/txt_layout_gender">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_field_date_birth"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:hint="@string/txt_field_date_of_birth_hint" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_layout_weight"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/medium_space"
+                app:errorIconDrawable="@null"
+                app:layout_constraintBottom_toTopOf="@+id/txt_layout_height"
+                app:layout_constraintEnd_toStartOf="@id/guideline_right"
+                app:layout_constraintStart_toStartOf="@id/guideline_left"
+                app:layout_constraintTop_toBottomOf="@+id/txt_layout_date_birth">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_field_weight"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/txt_field_weight_hint"
+                    android:inputType="numberSigned" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_layout_height"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/medium_space"
+                app:errorIconDrawable="@null"
+                app:layout_constraintBottom_toTopOf="@id/button"
+                app:layout_constraintEnd_toEndOf="@id/guideline_right"
+                app:layout_constraintStart_toStartOf="@id/guideline_left"
+                app:layout_constraintTop_toBottomOf="@+id/txt_layout_weight">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_field_height"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/txt_field_height_hint"
+                    android:inputType="numberSigned" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:text="@string/btn_save"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/guideline_right"
+                app:layout_constraintStart_toStartOf="@id/guideline_left"
+                app:layout_constraintTop_toBottomOf="@id/txt_layout_height" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</androidx.core.widget.NestedScrollView>

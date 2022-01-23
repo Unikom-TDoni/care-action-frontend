@@ -17,7 +17,7 @@
 
         <item name="android:windowBackground">@color/grey</item>
         <item name="android:itemBackground">@android:color/transparent</item>
-
+        <item name="android:fontFamily">@font/source_sans_pro</item>
     </style>
 
     <style name="Theme.CareAction.Starting" parent="Theme.SplashScreen">

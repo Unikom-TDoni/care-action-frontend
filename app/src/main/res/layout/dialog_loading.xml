@@ -7,7 +7,6 @@
     tools:context=".feature.support.loading.LoadingDialogFragment">
 
     <ProgressBar
-        android:id="@+id/progress_bar_loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

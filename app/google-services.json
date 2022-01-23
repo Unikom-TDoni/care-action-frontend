@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1097419796284",
+    "project_id": "care-action",
+    "storage_bucket": "care-action.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1097419796284:android:b301a2e4aa582cfe937839",
+        "android_client_info": {
+          "package_name": "edu.rpl.careaction"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1097419796284-rb1dv1c58d824a7j854q0jao8shs7s02.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCz-g2CEyg7J0ltx78GtmPgO2lm5haCPlQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1097419796284-rb1dv1c58d824a7j854q0jao8shs7s02.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_toolbar_menu_nav_graph"
+    app:startDestination="@id/homeViewBindingFragment">
+
+    <fragment
+        android:id="@+id/homeViewBindingFragment"
+        android:name="edu.rpl.careaction.feature.menu.home.presentation.HomeViewBindingFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_menu_home">
+        <action
+            android:id="@+id/action_homeViewBindingFragment_to_newsOverviewViewBindingFragment"
+            app:destination="@id/newsOverviewViewBindingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/healthyLifestyleRoutineViewBindingFragment"
+        android:name="edu.rpl.careaction.feature.activity_tracker.presentation.fragment.ActivityTrackerViewBindingFragment"
+        android:label="fragment_menu_healthy_lifestyle_routine"
+        tools:layout="@layout/fragment_menu_activity_tracker" />
+    <fragment
+        android:id="@+id/profileViewBindingFragment"
+        android:name="edu.rpl.careaction.feature.menu.profile.ProfileViewBindingFragment"
+        android:label="fragment_menu_profile"
+        tools:layout="@layout/fragment_menu_profile" />
+    <fragment
+        android:id="@+id/newsOverviewViewBindingFragment"
+        android:name="edu.rpl.careaction.feature.news.presentation.fragment.NewsOverviewViewBindingFragment"
+        android:label="fragment_news_overview"
+        tools:layout="@layout/fragment_news_overview">
+        <argument
+            android:name="idCategory"
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <argument
+            android:name="categoryName"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+</navigation>

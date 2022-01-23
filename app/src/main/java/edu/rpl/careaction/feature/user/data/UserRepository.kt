@@ -1,21 +1,18 @@
 package edu.rpl.careaction.feature.user.data
 
-import edu.rpl.careaction.core.helper.GsonMapperHelper
+import android.util.Log
+import edu.rpl.careaction.core.domain.ErrorResponse
+import edu.rpl.careaction.core.domain.Repository
 import edu.rpl.careaction.core.utility.DateUtility
 import edu.rpl.careaction.feature.user.data.dao.UserLocalDataSource
 import edu.rpl.careaction.feature.user.data.dao.UserRemoteDataSource
-import edu.rpl.careaction.feature.user.domain.dto.request.LoginRequest
-import edu.rpl.careaction.feature.user.domain.dto.request.RegisterProfileRequest
-import edu.rpl.careaction.feature.user.domain.dto.request.RegisterRequest
+import edu.rpl.careaction.feature.user.domain.dto.request.*
 import edu.rpl.careaction.feature.user.domain.dto.response.UserResponse
+import edu.rpl.careaction.feature.user.domain.dto.response.UserUpdateResponse
 import edu.rpl.careaction.feature.user.domain.dto.response.toUser
 import edu.rpl.careaction.feature.user.domain.entity.User
 import edu.rpl.careaction.module.api.ApiResult
-import edu.rpl.careaction.module.api.ErrorResponse
 import edu.rpl.careaction.module.api.FlowApiBuilder
-import edu.rpl.careaction.module.domain.Repository
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import okhttp3.ResponseBody
@@ -25,7 +22,6 @@ class UserRepository @Inject constructor(
     private val userLocalDataSource: UserLocalDataSource,
     private val userRemoteDataSource: UserRemoteDataSource,
 ) : Repository() {
-    override val defaultDispatcher: CoroutineDispatcher = Dispatchers.IO
 
     fun login(request: LoginRequest) =
         FlowApiBuilder<User, ErrorResponse, UserResponse>()
@@ -62,10 +58,10 @@ class UserRepository @Inject constructor(
             .setManageApiErrorResponse { onApiResponseError(it) }
             .setCoroutineContext(defaultDispatcher).build()
 
-    fun update(request: RegisterProfileRequest) =
+    fun registerProfile(request: RegisterProfileRequest) =
         FlowApiBuilder<ResponseBody, ErrorResponse, ResponseBody>()
             .setApiCall {
-                userRemoteDataSource.update(
+                userRemoteDataSource.registerProfile(
                     request,
                     userLocalDataSource.load()!!.token
                 )
@@ -82,6 +78,43 @@ class UserRepository @Inject constructor(
                 userLocalDataSource.save(userEntity)
                 it
             }
+            .setManageApiErrorResponse {
+                onApiResponseError(it)
+            }
+            .setCoroutineContext(defaultDispatcher).build()
+
+    fun update(request: UpdateProfileRequest) =
+        FlowApiBuilder<User, ErrorResponse, UserUpdateResponse>()
+            .setApiCall {
+                userRemoteDataSource.update(
+                    request.picture,
+                    request.name,
+                    request.weight,
+                    request.height,
+                    request.gender,
+                    request.birthdate,
+                    userLocalDataSource.load()!!.token
+                )
+            }
+            .setDefaultErrorResponseInstance(ErrorResponse())
+            .setManageApiSuccessResponse {
+                val userEntity = it.toUser(userLocalDataSource.load()!!)
+                userLocalDataSource.save(userEntity)
+                userEntity
+            }
+            .setManageApiErrorResponse { onApiResponseError(it) }
+            .setCoroutineContext(defaultDispatcher).build()
+
+    fun updatePassword(updatePasswordRequest: UpdatePasswordRequest) =
+        FlowApiBuilder<ResponseBody, ErrorResponse, ResponseBody>()
+            .setApiCall {
+                userRemoteDataSource.updatePassword(
+                    updatePasswordRequest,
+                    userLocalDataSource.load()!!.token
+                )
+            }
+            .setDefaultErrorResponseInstance(ErrorResponse())
+            .setManageApiSuccessResponse { it }
             .setManageApiErrorResponse { onApiResponseError(it) }
             .setCoroutineContext(defaultDispatcher).build()
 
@@ -91,9 +124,4 @@ class UserRepository @Inject constructor(
         else emit(ApiResult.Success(response))
     }.flowOn(defaultDispatcher)
 
-    private fun onApiResponseError(responseBody: ResponseBody) =
-        GsonMapperHelper.mapToDto(
-            responseBody.charStream(),
-            ErrorResponse::class.java
-        )
 }

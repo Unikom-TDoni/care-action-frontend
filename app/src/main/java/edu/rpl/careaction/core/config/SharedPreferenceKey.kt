@@ -2,5 +2,7 @@ package edu.rpl.careaction.core.config
 
 enum class SharedPreferenceKey {
     USER,
-    HEALTHYLIFESTYLEROUTINE
+    SETTING,
+    ACTIVITY_TRACKER,
+    ACTIVITY_TRACKER_DATE,
 }

@@ -1,81 +1,105 @@
 <resources>
     <!-- Core -->
-    <string name="app_name">CareAction</string>
+    <string name="app_name">Care Action</string>
     <string name="hello_world">Hello World</string>
 
     <!-- Error Message -->
     <string name="activity_not_found_error_message">Activity cannot be null</string>
 
     <!-- Login -->
-    <string name="txt_login_tittle">Welcome Back</string>
     <string name="btn_login">Login</string>
-    <string name="txt_login_link">Already have an account? Login</string>
+
+    <string name="txt_view_login_tittle">Welcome Back</string>
+    <string name="txt_view_login_link">Already have an account? Login</string>
+
     <string name="txt_field_email_hint">Email</string>
     <string name="txt_field_password_hint">Password</string>
 
     <!-- Error Message -->
-    <string name="email_required_error_message">Field email perlu di isi terlebih dahulu</string>
-    <string name="email_format_not_valid_error_message">Silahkan masukan format email yang tepat</string>
-    <string name="password_required_error_message">Field password perlu di isi terlebih dahulu</string>
-    <string name="password_length_below_minimum_error_message">Password harus memiliki minimal 8 character</string>
+    <string name="email_required_error_message">The email field is required</string>
+    <string name="password_required_error_message">The password field is required</string>
+    <string name="email_format_not_valid_error_message">Email address must have a valid format</string>
+    <string name="password_length_below_minimum_error_message">Password length must be at least 8 character</string>
 
     <!-- Register -->
-    <string name="txt_register_tittle">Create an account</string>
     <string name="btn_register">Register</string>
-    <string name="txt_register_link">Don\’t have an account yet? Register</string>
+
+    <string name="txt_view_register_tittle">Create an account</string>
+    <string name="txt_view_register_link">Don\’t have an account yet? Register</string>
+
     <string name="txt_field_name_hint">Name</string>
+
     <string name="check_box_policy_hint">By continuing you accept our Privacy Policy and Term of Use</string>
 
     <!-- Error Message -->
-    <string name="name_required_error_message">Field name perlu di isi terlebih dahulu</string>
-    <string name="name_below_minimum_error_message">Name harus memiliki minimal 3 character</string>
-    <string name="policy_required_error_message">Perlu menyetujui policy kita</string>
+    <string name="name_required_error_message">The name field is required</string>
+    <string name="name_below_minimum_error_message">Name length must be at least 3 character</string>
 
-    <!-- Profile -->
+    <!-- Register Profile -->
     <string name="btn_next">Next</string>
-    <string name="btn_edit">Edit</string>
-    <string name="btn_logout">Logout</string>
+
     <string name="txt_view_kg">KG</string>
-    <string name="txt_view_defined_kg">%1$d KG</string>
     <string name="txt_view_cm">CM</string>
-    <string name="txt_view_defined_cm">%1$d CM</string>
-    <string name="txt_view_age">Age</string>
-    <string name="txt_view_profile_tittle">Profile</string>
     <string name="txt_view_register_profile_tittle">Let\’s Complete Your Profile</string>
-    <string name="txt_field_weight_hint">Weight</string>
+
     <string name="txt_field_height_hint">Height</string>
-    <string name="txt_field_date_of_birth_hint">DD/MM/YYYY</string>
+    <string name="txt_field_weight_hint">Weight</string>
+    <string name="txt_field_date_of_birth_hint">Date Of Birth</string>
+
     <string name="spinner_gender_prompt">Choose Gender</string>
     <string-array name="gender_items">
         <item>Male</item>
         <item>Female</item>
     </string-array>
-    <string name="txt_view_contact_us">Contact Us</string>
-    <string name="txt_view_privacy">Privacy Policy</string>
-    <string name="txt_view_other">Other</string>
-    <string name="txt_view_notification">Notification</string>
-    <string name="txt_view_show_notification">Show Notification</string>
-    <string name="txt_view_account">Account</string>
-    <string name="txt_view_achievement">Achievement</string>
-    <string name="txt_view_activity_history">Activity History</string>
-    <string name="txt_view_workout_progress">Workout Progress</string>
 
     <!-- Error Message -->
-    <string name="gender_required_error_message">Perlu memilih gender terlebih dahulu</string>
-    <string name="weight_required_error_message">Field Weight perlu diisi terlebih dahulu</string>
-    <string name="weight_must_positive_error_message">Field Weight hanya boleh memiliki nilai positif</string>
-    <string name="height_required_error_message">Field Height perlu diisi terlebih dahulu</string>
-    <string name="height_must_int_error_message">Field Height hanya boleh memiliki nilai positif</string>
-    <string name="date_of_birth_required_error_message">Field Birth Of Birth perlu diisi terlebih dahulu</string>
+    <string name="gender_required_error_message">Gender needs to be selected</string>
+    <string name="weight_required_error_message">The weight field is required</string>
+    <string name="height_required_error_message">The height field is required</string>
+    <string name="height_must_valid_error_message">Height must have a valid value</string>
+    <string name="weight_must_valid_error_message">Weight must have a valid value</string>
+    <string name="date_of_birth_required_error_message">The date of birth field is required</string>
+
+    <!-- Menu Profile -->
+    <string name="btn_edit">Edit</string>
+    <string name="btn_logout">Logout</string>
+    <string name="btn_contact_us">Contact Us</string>
+    <string name="btn_privacy">Privacy Policy</string>
+    <string name="btn_achievement">Achievement</string>
+    <string name="btn_change_password">Change Password</string>
+    <string name="btn_activity_history">Activity History</string>
+    <string name="btn_workout_progress">Workout Progress</string>
+
+    <string name="txt_view_age">Age</string>
+    <string name="txt_view_other">Other</string>
+    <string name="txt_view_account">Account</string>
+    <string name="txt_view_profile_tittle">Profile</string>
+    <string name="txt_view_notification">Notification</string>
+    <string name="txt_view_show_notification">Show Notification</string>
+
+    <!-- Update Profile Menu -->
+    <string name="btn_save">Save</string>
+
+    <!-- Update Password -->
+    <string name="txt_field_new_password_hint">New Password</string>
+    <string name="txt_view_update_password_tittle">Change Password</string>
+    <string name="txt_field_current_password_hint">Current Password</string>
+    <string name="txt_field_confirmation_password_hint">Confirm New Password</string>
+
+    <!-- Error Message -->
+    <string name="new_password_required_error_message">The new password field is required</string>
+    <string name="current_password_required_error_message">The current password field is required</string>
+    <string name="confirmation_password_required_error_message">The confirmation password field is required</string>
+    <string name="not_same_confirmation_password_error_message">Confirmation password must be the same as the new password</string>
 
     <!-- Welcome -->
-    <string-array name="txt_welcome_title">
+    <string-array name="txt_view_welcome_tittle">
         <item>Stay Fit With Us</item>
         <item>Get Burn</item>
         <item>Eat Well</item>
     </string-array>
 
-    <string-array name="welcome_content">
+    <string-array name="txt_view_welcome_content">
         <item>We want to make you always doing healthy lifestyle for a better life</item>
         <item>Let\'s Keep Burning, to get better living in health. Get your body goals</item>
         <item>Start implementing a balanced diet, healthy eating is fun. Prep your own meal</item>
@@ -83,21 +107,29 @@
 
     <!-- Error Page -->
     <string name="btn_reload">Reload</string>
+
+    <!-- Error Message -->
     <string name="unknown_error_tittle">Uh oh..</string>
-    <string name="unknown_error_content">There\'s problem \n We can\'t load this data :(</string>
     <string name="connection_error_tittle">Whoops..</string>
+    <string name="unknown_error_content">There\'s problem \n We can\'t load this data :(</string>
     <string name="connection_error_content">Connection Lost :( \n Please check your network</string>
 
     <!-- Blog -->
     <string name="btn_view_more">View More</string>
 
-    <!-- Healthy Lifecycle Routine -->
-    <string name="txt_view_healthy_lifecycle_routine_tittle">Healthy Lifecycle Routine</string>
+    <!-- Activity Tracker -->
+    <string name="txt_view_activity_tracker_tittle">Activity Tracker</string>
 
     <!-- Home -->
-    <string name="txt_view_bmi_tittle">BMI (Body Mass Index)</string>
-    <string name="txt_view_recommend_news">Recommend News</string>
+    <string name="txt_view_news">News</string>
     <string name="txt_view_category">Category</string>
+    <string name="txt_view_recommend_news">Recommend News</string>
+    <string name="txt_view_bmi_tittle">BMI (Body Mass Index)</string>
+
+    <!-- On progress -->
+    <string name="txt_view_on_progress_tittle">COMING SOON</string>
+    <string name="btn_back_to_main_menu">Back to main menu</string>
+    <string name="txt_view_on_progress_content">We are currently working very hard on this page</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

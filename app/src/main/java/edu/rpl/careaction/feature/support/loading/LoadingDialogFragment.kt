@@ -1,12 +1,15 @@
 package edu.rpl.careaction.feature.support.loading
 
 import android.app.Dialog
+import android.content.DialogInterface
 import android.os.Bundle
-import edu.rpl.careaction.R
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
-import android.content.DialogInterface
 import androidx.fragment.app.FragmentManager
+import edu.rpl.careaction.R
 
 
 object LoadingDialogFragment : DialogFragment() {
@@ -27,6 +30,15 @@ object LoadingDialogFragment : DialogFragment() {
             STYLE_NORMAL,
             android.R.style.Theme_Translucent_NoTitleBar
         )
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        this.dialog?.setCanceledOnTouchOutside(false)
+        return super.onCreateView(inflater, container, savedInstanceState)
     }
 
     override fun show(manager: FragmentManager, tag: String?) {

@@ -8,16 +8,17 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import edu.rpl.careaction.R
-import edu.rpl.careaction.feature.user.presentation.UserViewModel
+import edu.rpl.careaction.feature.notification.NotificationWorkManager
 import edu.rpl.careaction.module.api.ApiResult
 import kotlinx.coroutines.cancel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+
 
 @AndroidEntryPoint
 class ApplicationActivity : AppCompatActivity() {
 
+    private val notificationWorkManager = NotificationWorkManager()
     private val applicationViewModel: ApplicationViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,24 +26,35 @@ class ApplicationActivity : AppCompatActivity() {
 
         initSharedFlowEvent()
         applicationViewModel.fetchUser()
+        applicationViewModel.fetchSetting()
 
-        installSplashScreen().apply { setKeepVisibleCondition { !applicationViewModel.isDataReady } }
+        installSplashScreen().apply { setKeepOnScreenCondition { !applicationViewModel.isDataReady } }
         setContentView(R.layout.activity_application)
     }
 
     private fun initSharedFlowEvent() =
         lifecycleScope.launch {
-            applicationViewModel.userSharedFlow.collect {
-                when (it) {
-                    is ApiResult.Success -> {
-                        if (it.response.isHaveCompleteProfile())
-                            findNavController(R.id.fragment_container_view).navigate(R.id.action_to_mainMenuViewBindingFragment)
-                        else
-                            findNavController(R.id.fragment_container_view).navigate(R.id.action_welcomeViewBindingFragment_to_registerProfileViewBindingFragment)
+            launch {
+                applicationViewModel.userSharedFlow.collect {
+                    when (it) {
+                        is ApiResult.Success -> {
+                            if (it.response.isHaveCompleteProfile())
+                                findNavController(R.id.fragment_container_view).navigate(R.id.action_to_menuNavGraph)
+                            else
+                                findNavController(R.id.fragment_container_view).navigate(R.id.action_welcomeViewBindingFragment_to_registerProfileViewBindingFragment)
+                        }
+                        else -> applicationViewModel.hideSplashScreenWhenActive()
                     }
-                    else -> applicationViewModel.hideSplashScreenWhenActive()
+                    this.cancel()
                 }
-                this.cancel()
+            }
+
+            launch {
+                applicationViewModel.settingSharedFlow.collect {
+                    if (it is ApiResult.Success)
+                        if (it.response.isNotificationActive) notificationWorkManager.start(this@ApplicationActivity)
+                    this.cancel()
+                }
             }
         }
 }

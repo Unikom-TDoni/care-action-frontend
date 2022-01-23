@@ -18,5 +18,4 @@ object GsonMapperHelper {
 
     fun<T> mapStringToDtoCollection(json: String?, type: Type) : T?
         = gson.fromJson(json, type)
-
 }

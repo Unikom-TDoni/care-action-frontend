@@ -4,40 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.support.menu.MainMenuViewBindingFragment">
+    tools:context=".feature.menu.MainMenuViewBindingFragment">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container_view"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:layout="@layout/fragment_menu_home"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        app:navGraph="@navigation/menu_nav_graph" />
+        app:navGraph="@navigation/bottom_toolbar_menu_nav_graph"
+        tools:layout="@layout/fragment_menu_home" />
 
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bottom_app_bar"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="@android:color/white"
-        app:contentInsetStart="0dp"
-        app:fabAlignmentMode="center"
-        app:fabCradleMargin="10dp">
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_nav_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_bottom_nav_view"
-            app:labelVisibilityMode="unlabeled"
-            app:menu="@menu/button_nav_menu" />
-
-    </com.google.android.material.bottomappbar.BottomAppBar>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_baseline_search_24"
-        app:layout_anchor="@id/bottom_app_bar" />
+        app:elevation="8dp"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/button_nav_menu" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

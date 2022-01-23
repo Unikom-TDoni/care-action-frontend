@@ -4,16 +4,19 @@
     <style name="textHeadingOne" parent="Widget.AppCompat.TextView">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">@dimen/txt_extra_large_size</item>
+        <item name="fontFamily">@font/lora_bold</item>
     </style>
 
     <style name="textHeadingTwo" parent="Widget.AppCompat.TextView">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">@dimen/txt_large_size</item>
+        <item name="fontFamily">@font/lora_bold</item>
     </style>
 
     <style name="textHeadingThree" parent="Widget.AppCompat.TextView">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">@dimen/txt_medium_size</item>
+        <item name="fontFamily">@font/lora_bold</item>
     </style>
 
     <style name="circular">

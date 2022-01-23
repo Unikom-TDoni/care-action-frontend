@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".feature.menu.profile.ProfileViewBindingFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -26,7 +27,7 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,8 +40,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/bottom_nav_menu_space"
-            tools:context=".feature.user.presentation.fragment.ProfileViewBindingFragment">
+            android:paddingBottom="@dimen/bottom_nav_menu_space">
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline_left"
@@ -61,7 +61,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/medium_space"
-                app:constraint_referenced_ids="image, txt_view_name, btn_edit_profile"
+                app:constraint_referenced_ids="image, btn_edit_profile"
                 app:flow_horizontalAlign="start"
                 app:flow_horizontalStyle="spread_inside"
                 app:layout_constraintEnd_toEndOf="@id/guideline_right"
@@ -80,7 +80,10 @@
                 style="@style/textHeadingTwo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:ignore="MissingConstraints" />
+                android:layout_marginStart="@dimen/large_space"
+                app:layout_constraintBottom_toBottomOf="@id/image"
+                app:layout_constraintStart_toEndOf="@id/image"
+                app:layout_constraintTop_toTopOf="@id/image" />
 
             <Button
                 android:id="@+id/btn_edit_profile"
@@ -260,10 +263,11 @@
                         android:drawablePadding="@dimen/extra_tiny_space"
                         android:paddingStart="@dimen/card_default_padding"
                         android:paddingEnd="@dimen/card_default_padding"
-                        android:text="@string/txt_view_achievement"
+                        android:text="@string/btn_achievement"
                         android:textAlignment="textStart"
                         android:textColor="@color/black_grey"
                         android:textSize="@dimen/txt_extra_tiny_size"
+                        android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/txt_view_account_tittle" />
@@ -279,10 +283,11 @@
                         android:drawablePadding="@dimen/extra_tiny_space"
                         android:paddingStart="@dimen/card_default_padding"
                         android:paddingEnd="@dimen/card_default_padding"
-                        android:text="@string/txt_view_activity_history"
+                        android:text="@string/btn_activity_history"
                         android:textAlignment="textStart"
                         android:textColor="@color/black_grey"
                         android:textSize="@dimen/txt_extra_tiny_size"
+                        android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/btn_achievement" />
@@ -292,19 +297,40 @@
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_btn_setting_bottom_state"
+                        android:background="@drawable/bg_btn_setting_state"
                         android:drawableStart="@drawable/ic_custom_workout_24"
                         android:drawableEnd="@drawable/ic_baseline_navigate_next_24"
                         android:drawablePadding="@dimen/extra_tiny_space"
                         android:paddingStart="@dimen/card_default_padding"
                         android:paddingEnd="@dimen/card_default_padding"
-                        android:text="@string/txt_view_workout_progress"
+                        android:text="@string/btn_workout_progress"
                         android:textAlignment="textStart"
                         android:textColor="@color/black_grey"
                         android:textSize="@dimen/txt_extra_tiny_size"
+                        android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/btn_activity_history" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_change_password"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_btn_setting_bottom_state"
+                        android:drawableStart="@drawable/ic_outline_lock_24"
+                        android:drawableEnd="@drawable/ic_baseline_navigate_next_24"
+                        android:drawablePadding="@dimen/extra_tiny_space"
+                        android:paddingStart="@dimen/card_default_padding"
+                        android:paddingEnd="@dimen/card_default_padding"
+                        android:text="@string/btn_change_password"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/black_grey"
+                        android:textSize="@dimen/txt_extra_tiny_size"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/btn_workout_progress" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -337,7 +363,6 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.constraintlayout.helper.widget.Flow
-                        android:id="@+id/flow_notification"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:constraint_referenced_ids="txt_view_notification_content, switch_notification"
@@ -350,7 +375,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:drawablePadding="@dimen/tiny_space"
+                        android:gravity="center"
                         android:text="@string/txt_view_show_notification"
+                        android:textSize="@dimen/txt_extra_tiny_size"
+                        android:textStyle="bold"
                         app:drawableStartCompat="@drawable/ic_custom_notification_24" />
 
                     <androidx.appcompat.widget.SwitchCompat
@@ -402,10 +430,11 @@
                         android:drawablePadding="@dimen/extra_tiny_space"
                         android:paddingStart="@dimen/card_default_padding"
                         android:paddingEnd="@dimen/card_default_padding"
-                        android:text="@string/txt_view_contact_us"
+                        android:text="@string/btn_contact_us"
                         android:textAlignment="textStart"
                         android:textColor="@color/black_grey"
                         android:textSize="@dimen/txt_extra_tiny_size"
+                        android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/txt_view_other_tittle" />
@@ -421,10 +450,11 @@
                         android:drawablePadding="@dimen/extra_tiny_space"
                         android:paddingStart="@dimen/card_default_padding"
                         android:paddingEnd="@dimen/card_default_padding"
-                        android:text="@string/txt_view_privacy"
+                        android:text="@string/btn_privacy"
                         android:textAlignment="textStart"
                         android:textColor="@color/black_grey"
                         android:textSize="@dimen/txt_extra_tiny_size"
+                        android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/btn_contact" />
@@ -445,6 +475,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -115,29 +115,28 @@
             android:layout_height="match_parent"
             android:drawableStart="@drawable/ic_custom_weight_24"
             android:hint="@string/txt_field_weight_hint"
-            android:inputType="numberSigned" />
+            android:inputType="numberSigned"
+            android:maxLength="3" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/kg_card_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/card_default_padding"
         app:cardCornerRadius="@dimen/card_default_corner_radius"
         app:cardElevation="0dp"
-        app:layout_constraintBottom_toBottomOf="@id/txt_layout_weight"
+        app:layout_constraintDimensionRatio="1:0.925"
         app:layout_constraintEnd_toStartOf="@id/guideline_right"
         app:layout_constraintStart_toEndOf="@id/txt_layout_weight"
         app:layout_constraintTop_toTopOf="@id/txt_layout_weight">
 
         <TextView
-            android:id="@+id/txt_view_kg"
-            android:textSize="@dimen/txt_small_size"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@string/txt_view_kg"
+            android:textSize="@dimen/txt_small_size"
             android:textStyle="bold" />
 
     </androidx.cardview.widget.CardView>
@@ -165,36 +164,35 @@
             android:layout_height="match_parent"
             android:drawableStart="@drawable/ic_custom_ruler_24"
             android:hint="@string/txt_field_height_hint"
-            android:inputType="numberSigned" />
+            android:inputType="numberSigned"
+            android:maxLength="3" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cm_card_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/card_default_padding"
         app:cardCornerRadius="@dimen/card_default_corner_radius"
         app:cardElevation="0dp"
-        app:layout_constraintBottom_toBottomOf="@id/txt_layout_height"
+        app:layout_constraintDimensionRatio="1:0.925"
         app:layout_constraintEnd_toStartOf="@id/guideline_right"
         app:layout_constraintStart_toEndOf="@id/txt_layout_weight"
         app:layout_constraintTop_toTopOf="@id/txt_layout_height">
 
         <TextView
-            android:id="@+id/txt_view_cm"
-            android:textSize="@dimen/txt_small_size"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@string/txt_view_cm"
+            android:textSize="@dimen/txt_small_size"
             android:textStyle="bold" />
 
     </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/btn_main_menu"
-        android:layout_width="@dimen/btn_normal_width_size"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/btn_next"
         app:layout_constraintBottom_toBottomOf="parent"

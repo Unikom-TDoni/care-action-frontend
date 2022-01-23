@@ -1,14 +1,15 @@
 package edu.rpl.careaction.feature.news.presentation.adapter
 
-import edu.rpl.careaction.R
-import android.view.ViewGroup
-import com.bumptech.glide.Glide
 import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import edu.rpl.careaction.R
 import edu.rpl.careaction.databinding.ItemNewsCategoryBinding
+import edu.rpl.careaction.feature.menu.home.presentation.HomeViewBindingFragmentDirections
 import edu.rpl.careaction.feature.news.domain.entity.NewsCategory
 
 class NewsCategoryRecyclerViewAdapter :
@@ -38,10 +39,17 @@ class NewsCategoryRecyclerViewAdapter :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val newsCategory = newsCategoriesDiffer.currentList[position]
-        holder.binding.cardView.setOnClickListener {
-            it.findNavController().navigate(R.id.welcomeViewBindingFragment)
+        holder.binding.root.setOnClickListener {
+            it.findNavController()
+                .navigate(
+                    HomeViewBindingFragmentDirections.actionHomeViewBindingFragmentToNewsOverviewViewBindingFragment(
+                        newsCategory.id,
+                        newsCategory.name
+                    )
+                )
         }
-        Glide.with(holder.binding.icon).load(newsCategory.icon).into(holder.binding.icon)
+        Glide.with(holder.binding.icon).load(newsCategory.icon)
+            .placeholder(R.drawable.img_placeholder).into(holder.binding.icon)
         holder.binding.tittle.text = newsCategory.name
     }
 

@@ -5,12 +5,11 @@ import edu.rpl.careaction.feature.news.domain.entity.NewsOverview
 
 data class NewsOverviewResponse(
     val data: Collection<Data>
-){
+) {
     data class Data(
-        @SerializedName("id_news")
-        val id: Int,
         val title: String,
-        val thumbnail: String
+        val thumbnail: String,
+        @SerializedName("id_news") val id: Int,
     )
 }
 

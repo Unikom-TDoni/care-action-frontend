@@ -4,10 +4,12 @@
 
     <!-- Card -->
     <dimen name="card_square_tiny_size">60dp</dimen>
-    <dimen name="card_square_size">120dp</dimen>
+    <dimen name="card_square_medium_size">90dp</dimen>
+    <dimen name="card_square_large_size">120dp</dimen>
     <dimen name="card_rectangle_extra_small_height">60dp</dimen>
     <dimen name="card_rectangle_small_height">80dp</dimen>
     <dimen name="card_rectangle_medium_height">160dp</dimen>
+    <dimen name="card_rectangle_large_height">240dp</dimen>
     <dimen name="card_default_padding">12dp</dimen>
     <dimen name="card_big_padding">20dp</dimen>
     <dimen name="card_default_corner_radius">8dp</dimen>
@@ -19,7 +21,6 @@
     <dimen name="small_space">16dp</dimen>
     <dimen name="medium_space">24dp</dimen>
     <dimen name="large_space">28dp</dimen>
-    <dimen name="extra_large_space">32dp</dimen>
     <dimen name="extra_extra_large_space">36dp</dimen>
     <dimen name="bottom_nav_menu_space">90dp</dimen>
 
@@ -31,7 +32,6 @@
     <!-- Button -->
     <dimen name="btn_fab_margin_size">32dp</dimen>
     <dimen name="btn_fab_progress_size">90dp</dimen>
-    <dimen name="btn_normal_width_size">120dp</dimen>
 
     <!-- Text -->
     <dimen name="txt_extra_tiny_size">12sp</dimen>

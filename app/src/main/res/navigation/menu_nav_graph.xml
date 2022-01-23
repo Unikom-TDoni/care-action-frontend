@@ -3,21 +3,51 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/menu_nav_graph"
-    app:startDestination="@id/homeViewBindingFragment">
+    app:startDestination="@id/mainMenuViewBindingFragment">
 
     <fragment
-        android:id="@+id/homeViewBindingFragment"
-        android:name="edu.rpl.careaction.feature.support.menu.home.presentation.HomeViewBindingFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_menu_home" />
+        android:id="@+id/mainMenuViewBindingFragment"
+        android:name="edu.rpl.careaction.feature.menu.MainMenuViewBindingFragment"
+        android:label="fragment_main_menu"
+        tools:layout="@layout/fragment_main_menu">
+        <action
+            android:id="@+id/action_mainMenuViewBindingFragment_to_newsDetailViewBindingFragment"
+            app:destination="@id/newsDetailViewBindingFragment" />
+        <action
+            android:id="@+id/action_mainMenuViewBindingFragment_to_updateProfileViewBindingFragment"
+            app:destination="@id/updateProfileViewBindingFragment" />
+        <action
+            android:id="@+id/action_mainMenuViewBindingFragment_to_onProgressViewBindingFragment"
+            app:destination="@id/onProgressViewBindingFragment" />
+        <action
+            android:id="@+id/action_mainMenuViewBindingFragment_to_updatePasswordViewBindingFragment"
+            app:destination="@id/updatePasswordViewBindingFragment" />
+    </fragment>
+
     <fragment
-        android:id="@+id/healthyLifestyleRoutineViewBindingFragment"
-        android:name="edu.rpl.careaction.feature.task.presentation.fragment.HealthyLifestyleRoutineViewBindingFragment"
-        android:label="fragment_menu_healthy_lifestyle_routine"
-        tools:layout="@layout/fragment_menu_healthy_lifestyle_routine" />
+        android:id="@+id/newsDetailViewBindingFragment"
+        android:name="edu.rpl.careaction.feature.news.presentation.fragment.NewsDetailViewBindingFragment"
+        android:label="fragment_news_detail"
+        tools:layout="@layout/fragment_news_detail">
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
+
     <fragment
-        android:id="@+id/profileViewBindingFragment"
-        android:name="edu.rpl.careaction.feature.user.presentation.fragment.ProfileViewBindingFragment"
-        android:label="fragment_menu_profile"
-        tools:layout="@layout/fragment_menu_profile" />
+        android:id="@+id/updateProfileViewBindingFragment"
+        android:name="edu.rpl.careaction.feature.user.presentation.fragment.UpdateProfileViewBindingFragment"
+        android:label="fragment_update_profile"
+        tools:layout="@layout/fragment_update_profile" />
+    <fragment
+        android:id="@+id/onProgressViewBindingFragment"
+        android:name="edu.rpl.careaction.feature.support.on_progress.OnProgressViewBindingFragment"
+        android:label="fragment_on_progress"
+        tools:layout="@layout/fragment_on_progress" />
+    <fragment
+        android:id="@+id/updatePasswordViewBindingFragment"
+        android:name="edu.rpl.careaction.feature.user.presentation.fragment.UpdatePasswordViewBindingFragment"
+        android:label="fragment_update_password"
+        tools:layout="@layout/fragment_update_password" />
+
 </navigation>

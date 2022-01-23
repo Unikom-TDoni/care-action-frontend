@@ -1,25 +1,23 @@
 package edu.rpl.careaction.feature.news.data
 
-import edu.rpl.careaction.core.helper.GsonMapperHelper
+import edu.rpl.careaction.core.domain.ErrorResponse
+import edu.rpl.careaction.core.domain.Repository
 import edu.rpl.careaction.feature.news.data.dao.NewsRemoteDataSource
-import edu.rpl.careaction.feature.news.domain.dto.request.OverviewNewsRequest
+import edu.rpl.careaction.feature.news.domain.dto.request.NewsDetailRequest
+import edu.rpl.careaction.feature.news.domain.dto.request.NewsOverviewRequest
+import edu.rpl.careaction.feature.news.domain.dto.request.NewsRecommendedRequest
 import edu.rpl.careaction.feature.news.domain.dto.response.*
 import edu.rpl.careaction.feature.news.domain.entity.NewsCategory
+import edu.rpl.careaction.feature.news.domain.entity.NewsDetail
 import edu.rpl.careaction.feature.news.domain.entity.NewsOverview
 import edu.rpl.careaction.feature.user.data.dao.UserLocalDataSource
-import edu.rpl.careaction.module.api.ErrorResponse
 import edu.rpl.careaction.module.api.FlowApiBuilder
-import edu.rpl.careaction.module.domain.Repository
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
-import okhttp3.ResponseBody
 import javax.inject.Inject
 
 class NewsRepository @Inject constructor(
     private val userLocalDataSource: UserLocalDataSource,
     private val newsRemoteDataSource: NewsRemoteDataSource
 ) : Repository() {
-    override val defaultDispatcher: CoroutineDispatcher = Dispatchers.IO
 
     fun fetchCategory() =
         FlowApiBuilder<Collection<NewsCategory>, ErrorResponse, NewsCategoryResponse>()
@@ -33,10 +31,13 @@ class NewsRepository @Inject constructor(
             .setManageApiErrorResponse { onApiResponseError(it) }
             .setCoroutineContext(defaultDispatcher).build()
 
-    fun fetchOverview(overviewNewsRequest: OverviewNewsRequest) =
+    fun fetchOverview(newsOverviewRequest: NewsOverviewRequest) =
         FlowApiBuilder<Collection<NewsOverview>, ErrorResponse, NewsOverviewResponse>()
             .setApiCall {
-                newsRemoteDataSource.fetchOverview(overviewNewsRequest, userLocalDataSource.load()!!.token)
+                newsRemoteDataSource.fetchOverview(
+                    newsOverviewRequest,
+                    userLocalDataSource.load()!!.token
+                )
             }
             .setDefaultErrorResponseInstance(ErrorResponse())
             .setManageApiSuccessResponse {
@@ -45,10 +46,13 @@ class NewsRepository @Inject constructor(
             .setManageApiErrorResponse { onApiResponseError(it) }
             .setCoroutineContext(defaultDispatcher).build()
 
-    fun fetchRecommendOverview() =
+    fun fetchRecommendOverview(newsRecommendedRequest: NewsRecommendedRequest) =
         FlowApiBuilder<Collection<NewsOverview>, ErrorResponse, NewsOverviewResponse>()
             .setApiCall {
-                newsRemoteDataSource.fetchRecommendOverview(userLocalDataSource.load()!!.token)
+                newsRemoteDataSource.fetchRecommendOverview(
+                    newsRecommendedRequest,
+                    userLocalDataSource.load()!!.token
+                )
             }
             .setDefaultErrorResponseInstance(ErrorResponse())
             .setManageApiSuccessResponse {
@@ -57,9 +61,18 @@ class NewsRepository @Inject constructor(
             .setManageApiErrorResponse { onApiResponseError(it) }
             .setCoroutineContext(defaultDispatcher).build()
 
-    private fun onApiResponseError(responseBody: ResponseBody) =
-        GsonMapperHelper.mapToDto(
-            responseBody.charStream(),
-            ErrorResponse::class.java
-        )
+    fun fetchDetail(newsDetailRequest: NewsDetailRequest) =
+        FlowApiBuilder<NewsDetail, ErrorResponse, NewsDetailResponse>()
+            .setApiCall {
+                newsRemoteDataSource.fetchDetail(
+                    newsDetailRequest,
+                    userLocalDataSource.load()!!.token
+                )
+            }
+            .setDefaultErrorResponseInstance(ErrorResponse())
+            .setManageApiSuccessResponse {
+                it.toNewsDetail()
+            }
+            .setManageApiErrorResponse { onApiResponseError(it) }
+            .setCoroutineContext(defaultDispatcher).build()
 }

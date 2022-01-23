@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.support.menu.home.presentation.HomeViewBindingFragment">
+    tools:context=".feature.menu.home.presentation.HomeViewBindingFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/medium_space"
             android:layout_marginBottom="@dimen/extra_extra_tiny_space"
-            android:text="@string/txt_login_tittle"
+            android:text="@string/txt_view_login_tittle"
             android:textSize="@dimen/txt_small_size"
             app:layout_constraintBottom_toTopOf="@id/txt_view_name"
             app:layout_constraintStart_toStartOf="@id/guideline_left"
@@ -87,8 +87,8 @@
 
                 <ProgressBar
                     android:id="@+id/progress_circular"
-                    android:layout_width="85dp"
-                    android:layout_height="85dp"
+                    android:layout_width="@dimen/card_square_medium_size"
+                    android:layout_height="@dimen/card_square_medium_size"
                     android:indeterminateOnly="false"
                     android:max="30"
                     android:progressDrawable="@drawable/bg_ring_progress_big"
@@ -97,10 +97,10 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/txt_view_bmi"
+                    android:id="@+id/txt_view_bmi_score"
                     android:layout_width="wrap_content"
-                    android:textSize="@dimen/txt_small_size"
                     android:layout_height="wrap_content"
+                    android:textSize="@dimen/txt_small_size"
                     app:layout_constraintBottom_toBottomOf="@id/progress_circular"
                     app:layout_constraintEnd_toEndOf="@id/progress_circular"
                     app:layout_constraintStart_toStartOf="@id/progress_circular"
@@ -116,8 +116,9 @@
             android:layout_height="@dimen/card_rectangle_small_height"
             android:layout_marginBottom="@dimen/small_space"
             android:drawableEnd="@drawable/ic_baseline_menu_24"
-            android:text="@string/txt_view_healthy_lifecycle_routine_tittle"
+            android:text="@string/txt_view_activity_tracker_tittle"
             android:textAlignment="textStart"
+            android:textSize="@dimen/txt_small_size"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/card_motivation"
             app:layout_constraintEnd_toEndOf="@id/guideline_right"
@@ -143,7 +144,8 @@
                 android:layout_gravity="center"
                 android:padding="@dimen/card_big_padding"
                 android:textAlignment="center"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/txt_small_size" />
 
         </androidx.cardview.widget.CardView>
 
@@ -176,14 +178,14 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/small_space"
             android:text="@string/txt_view_recommend_news"
-            app:layout_constraintBottom_toTopOf="@id/fragment_blog_overview"
+            app:layout_constraintBottom_toTopOf="@id/view_news_overview"
             app:layout_constraintEnd_toEndOf="@id/guideline_right"
             app:layout_constraintStart_toStartOf="@id/guideline_left"
             app:layout_constraintTop_toBottomOf="@id/recycler_view_category" />
 
         <include
-            android:id="@+id/fragment_blog_overview"
-            layout="@layout/fragment_news_overview"
+            android:id="@+id/view_news_overview"
+            layout="@layout/view_overview_news"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"

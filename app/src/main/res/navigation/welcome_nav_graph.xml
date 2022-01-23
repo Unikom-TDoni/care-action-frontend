@@ -39,7 +39,7 @@
     </fragment>
     <fragment
         android:id="@+id/welcomeViewBindingFragment"
-        android:name="edu.rpl.careaction.feature.support.welcome.WelcomeViewBindingFragment"
+        android:name="edu.rpl.careaction.feature.menu.welcome.WelcomeViewBindingFragment"
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome">
         <action

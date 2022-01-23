@@ -8,10 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
 abstract class ViewBindingFragment<out T : ViewBinding> : Fragment() {
-    private var _binding : ViewBinding? = null
+    private var _binding: ViewBinding? = null
 
     @Suppress("UNCHECKED_CAST")
-    protected val binding : T
+    protected val binding: T
         get() = _binding as T
 
     override fun onCreateView(

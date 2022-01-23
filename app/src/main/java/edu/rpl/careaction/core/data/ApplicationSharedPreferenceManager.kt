@@ -12,4 +12,7 @@ class ApplicationSharedPreferenceManager @Inject constructor(
 ) : SharedPreferenceManager<SharedPreferenceKey>(context.resources.getString(R.string.app_name), context) {
     fun getString(sharedPreferenceKey: SharedPreferenceKey) =
         sharedPreferences.getString(sharedPreferenceKey.name, String())
+
+    fun getLong(sharedPreferenceKey: SharedPreferenceKey) =
+        sharedPreferences.getLong(sharedPreferenceKey.name, 0)
 }

@@ -3,15 +3,15 @@ package edu.rpl.careaction.core.dependency
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.components.SingletonComponent
 import edu.rpl.careaction.feature.news.data.dao.NewsRemoteDataSource
-import edu.rpl.careaction.feature.motivation.data.dao.MotivationRemoteDataSource
-import edu.rpl.careaction.feature.task.data.dao.TaskRemoteDataSource
+import edu.rpl.careaction.feature.support.motivation.data.dao.MotivationRemoteDataSource
+import edu.rpl.careaction.feature.activity_tracker.data.dao.ActivityTrackerRemoteDataSource
 import edu.rpl.careaction.feature.user.data.dao.UserRemoteDataSource
-import edu.rpl.careaction.module.api.RetrofitBuilder
+import edu.rpl.careaction.core.builder.RetrofitBuilder
 
 @Module
-@InstallIn(ViewModelComponent::class)
+@InstallIn(SingletonComponent::class)
 object RemoteDataSourceModule {
     @Provides
     fun provideUserRemoteDataSource() =
@@ -22,8 +22,8 @@ object RemoteDataSourceModule {
         RetrofitBuilder.buildService(NewsRemoteDataSource::class.java)
 
     @Provides
-    fun provideTaskRemoteDataSource() =
-        RetrofitBuilder.buildService(TaskRemoteDataSource::class.java)
+    fun provideActivityTrackerRemoteDataSource() =
+        RetrofitBuilder.buildService(ActivityTrackerRemoteDataSource::class.java)
 
     @Provides
     fun provideMotivationRemoteDataSource() =

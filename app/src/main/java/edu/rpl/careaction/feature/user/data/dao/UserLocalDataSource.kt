@@ -1,10 +1,10 @@
 package edu.rpl.careaction.feature.user.data.dao
 
-import javax.inject.Inject
 import edu.rpl.careaction.core.config.SharedPreferenceKey
 import edu.rpl.careaction.core.data.ApplicationSharedPreferenceManager
 import edu.rpl.careaction.core.helper.GsonMapperHelper
 import edu.rpl.careaction.feature.user.domain.entity.User
+import javax.inject.Inject
 
 class UserLocalDataSource @Inject constructor(
     private val applicationSharedPreferenceManager: ApplicationSharedPreferenceManager
