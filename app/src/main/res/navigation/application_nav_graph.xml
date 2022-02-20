@@ -3,24 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/application_nav_graph"
-    app:startDestination="@id/welcome_nav_graph">
+    app:startDestination="@id/landing_nav_graph">
 
     <include app:graph="@navigation/menu_nav_graph" />
-    <include app:graph="@navigation/welcome_nav_graph" />
+    <include app:graph="@navigation/landing_nav_graph" />
 
     <fragment
         android:id="@+id/errorViewBindingFragment"
-        android:name="edu.rpl.careaction.feature.support.error.ErrorViewBindingFragment"
+        android:name="edu.rpl.careaction.feature.page.error.ErrorViewBindingFragment"
         android:label="fragment_error"
         tools:layout="@layout/fragment_error">
         <argument
             android:name="error"
-            app:argType="edu.rpl.careaction.feature.support.error.ErrorParcelable" />
+            app:argType="edu.rpl.careaction.feature.page.error.ErrorParcelable" />
     </fragment>
 
     <action
         android:id="@+id/action_to_errorViewBindingFragment"
-        app:destination="@+id/errorViewBindingFragment"/>
+        app:destination="@+id/errorViewBindingFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim" />
 
     <action
         android:id="@+id/action_to_menuNavGraph"

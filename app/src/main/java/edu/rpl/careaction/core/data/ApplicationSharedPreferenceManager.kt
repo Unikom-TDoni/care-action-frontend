@@ -8,8 +8,11 @@ import edu.rpl.careaction.module.storage.SharedPreferenceManager
 import javax.inject.Inject
 
 class ApplicationSharedPreferenceManager @Inject constructor(
-    @ApplicationContext val context: Context
-) : SharedPreferenceManager<SharedPreferenceKey>(context.resources.getString(R.string.app_name), context) {
+    @ApplicationContext context: Context
+) : SharedPreferenceManager<SharedPreferenceKey>(
+    context.resources.getString(R.string.app_name),
+    context
+) {
     fun getString(sharedPreferenceKey: SharedPreferenceKey) =
         sharedPreferences.getString(sharedPreferenceKey.name, String())
 

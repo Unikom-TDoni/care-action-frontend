@@ -19,8 +19,8 @@ class UpdatePasswordFormValidation(
         val confirmationPassword = element.confirmationPassword.text.toString()
 
         val elementValidationResult = mapOf(
-            R.id.txt_field_new_password to validateNewPassword(newPassword),
             R.id.txt_field_password to validateCurrentPassword(currentPassword),
+            R.id.txt_field_new_password to validateNewPassword(newPassword, currentPassword),
             R.id.txt_field_confirmation_password to validateConfirmationPassword(
                 confirmationPassword,
                 newPassword
@@ -33,8 +33,8 @@ class UpdatePasswordFormValidation(
             else ->
                 FormValidationResult.Success(
                     UpdatePasswordRequest(
-                        (elementValidationResult[R.id.txt_field_password] as FormElementValidationResult.Success<String>).value,
                         (elementValidationResult[R.id.txt_field_new_password] as FormElementValidationResult.Success<String>).value,
+                        (elementValidationResult[R.id.txt_field_password] as FormElementValidationResult.Success<String>).value,
                         (elementValidationResult[R.id.txt_field_confirmation_password] as FormElementValidationResult.Success<String>).value,
                     )
                 )
@@ -47,9 +47,10 @@ class UpdatePasswordFormValidation(
         else -> FormElementValidationResult.Success(currentPassword)
     }
 
-    private fun validateNewPassword(newPassword: String) = when {
+    private fun validateNewPassword(newPassword: String, currentPassword: String) = when {
         newPassword.isBlank() -> FormElementValidationResult.Error(R.string.new_password_required_error_message)
         newPassword.length < 8 -> FormElementValidationResult.Error(R.string.password_length_below_minimum_error_message)
+        newPassword == currentPassword -> FormElementValidationResult.Error(R.string.new_password_same_error_message)
         else -> FormElementValidationResult.Success(newPassword)
     }
 

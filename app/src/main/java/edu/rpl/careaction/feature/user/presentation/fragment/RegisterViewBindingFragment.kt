@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.res.ResourcesCompat
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.lifecycle.Lifecycle
@@ -13,7 +15,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import edu.rpl.careaction.R
-import edu.rpl.careaction.core.builder.SpanLinkBuilder
+import edu.rpl.careaction.module.presentation.SpanLinkBuilder
 import edu.rpl.careaction.core.domain.ErrorResponse
 import edu.rpl.careaction.core.utility.DefaultApiCallbackUtility
 import edu.rpl.careaction.core.utility.TextFieldUtility
@@ -26,7 +28,7 @@ import edu.rpl.careaction.feature.user.presentation.validation.register.Register
 import edu.rpl.careaction.feature.user.presentation.validation.register.RegisterFormValidation
 import edu.rpl.careaction.module.api.ApiCallback
 import edu.rpl.careaction.module.api.ApiResult
-import edu.rpl.careaction.module.ui.ViewBindingFragment
+import edu.rpl.careaction.module.presentation.ViewBindingFragment
 import edu.rpl.careaction.module.validation.FormValidationCallback
 import edu.rpl.careaction.module.validation.FormValidationResult
 import kotlinx.coroutines.flow.collect
@@ -34,7 +36,7 @@ import kotlinx.coroutines.launch
 
 class RegisterViewBindingFragment : ViewBindingFragment<FragmentRegisterBinding>() {
 
-    private val userViewModel: UserViewModel by hiltNavGraphViewModels(R.id.welcome_nav_graph)
+    private val userViewModel: UserViewModel by hiltNavGraphViewModels(R.id.landing_nav_graph)
     override val bindingInflater: (LayoutInflater) -> ViewBinding = FragmentRegisterBinding::inflate
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,9 +45,9 @@ class RegisterViewBindingFragment : ViewBindingFragment<FragmentRegisterBinding>
         initTextViewLink()
         initCheckboxEvent()
         initTextFieldEvent()
+        initNavigationEvent()
         initSharedFlowEvent(generateApiCallback())
-        initButtonEvent(generateFormValidation(), generateValidationCallback())
-
+        initButtonEvent(generateFormValidation(), generateFormValidationCallback())
     }
 
     private fun initSharedFlowEvent(apiCallback: ApiCallback<User, ErrorResponse>) =
@@ -74,7 +76,7 @@ class RegisterViewBindingFragment : ViewBindingFragment<FragmentRegisterBinding>
             }
         }
 
-    private fun initTextFieldEvent() {
+    private fun initTextFieldEvent() =
         TextFieldUtility.initOnTextFieldChangedCustomErrorEvent(
             mapOf(
                 binding.txtLayoutName to binding.txtFieldName,
@@ -82,7 +84,6 @@ class RegisterViewBindingFragment : ViewBindingFragment<FragmentRegisterBinding>
                 binding.txtLayoutPassword to binding.txtFieldPassword,
             )
         )
-    }
 
     private fun initCheckboxEvent() {
         val defaultColorStateList = binding.checkBox.buttonTintList
@@ -91,6 +92,23 @@ class RegisterViewBindingFragment : ViewBindingFragment<FragmentRegisterBinding>
             if (binding.checkBox.buttonTintList != defaultColorStateList)
                 binding.checkBox.buttonTintList = defaultColorStateList
         }
+    }
+
+    private fun initNavigationEvent() {
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true) {
+                var pressedTime = 0L
+                override fun handleOnBackPressed() {
+                    if (pressedTime + 2000 > System.currentTimeMillis()) requireActivity().finish()
+                    else Toast.makeText(
+                        requireContext(),
+                        getString(R.string.toast_back_to_exit),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    pressedTime = System.currentTimeMillis()
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
     }
 
     private fun initTextViewLink() {
@@ -137,7 +155,7 @@ class RegisterViewBindingFragment : ViewBindingFragment<FragmentRegisterBinding>
             }
         )
 
-    private fun generateValidationCallback(): FormValidationCallback<RegisterRequest> =
+    private fun generateFormValidationCallback(): FormValidationCallback<RegisterRequest> =
         FormValidationCallback(
             successCallback = {
                 userViewModel.register(it)

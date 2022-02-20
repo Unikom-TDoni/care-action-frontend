@@ -1,18 +1,17 @@
 package edu.rpl.careaction.feature.activity_tracker.data
 
-import edu.rpl.careaction.core.domain.Repository
+import edu.rpl.careaction.core.domain.ErrorResponse
+import edu.rpl.careaction.core.data.Repository
 import edu.rpl.careaction.feature.activity_tracker.data.dao.ActivityTrackerLocalDataSource
 import edu.rpl.careaction.feature.activity_tracker.data.dao.ActivityTrackerRemoteDataSource
 import edu.rpl.careaction.feature.activity_tracker.domain.dto.request.ActivityTrackerRequest
 import edu.rpl.careaction.feature.activity_tracker.domain.dto.response.ActivityTrackerResponse
-import edu.rpl.careaction.feature.activity_tracker.domain.dto.response.toActivityTrackers
 import edu.rpl.careaction.feature.activity_tracker.domain.entity.ActivityTracker
 import edu.rpl.careaction.feature.user.data.dao.UserLocalDataSource
 import edu.rpl.careaction.module.api.ApiResult
-import edu.rpl.careaction.core.domain.ErrorResponse
 import edu.rpl.careaction.module.api.FlowApiBuilder
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import okhttp3.ResponseBody
 import java.util.*
 import javax.inject.Inject
@@ -23,10 +22,8 @@ class ActivityTrackerRepository @Inject constructor(
     private val activityTrackerRemoteDataSource: ActivityTrackerRemoteDataSource
 ) : Repository() {
 
-    fun fetch(activityTrackerRequest: ActivityTrackerRequest): Flow<ApiResult<Collection<ActivityTracker>, ErrorResponse>> {
-        val response = fetchLocal()
-        return if (response != null) flow { emit(ApiResult.Success(response)) }
-        else FlowApiBuilder<Collection<ActivityTracker>, ErrorResponse, ActivityTrackerResponse>()
+    fun fetch(activityTrackerRequest: ActivityTrackerRequest) =
+        FlowApiBuilder<Collection<ActivityTracker>, ErrorResponse, ActivityTrackerResponse>()
             .setApiCall {
                 activityTrackerRemoteDataSource.fetch(
                     activityTrackerRequest,
@@ -41,7 +38,6 @@ class ActivityTrackerRepository @Inject constructor(
             }
             .setManageApiErrorResponse { onApiResponseError(it) }
             .setCoroutineContext(defaultDispatcher).build()
-    }
 
     fun update(activityTrackerRequest: Collection<ActivityTrackerRequest>) =
         FlowApiBuilder<ResponseBody, ErrorResponse, ResponseBody>()
@@ -65,15 +61,24 @@ class ActivityTrackerRepository @Inject constructor(
             .setManageApiErrorResponse { onApiResponseError(it) }
             .setCoroutineContext(defaultDispatcher).build()
 
-    fun fetchLocal() =
-        activityTrackerLocalDataSource.load()
+    fun fetchLocal() = flow {
+        val response = activityTrackerLocalDataSource.load()
+        if (response == null) emit(
+            ApiResult.Error<Collection<ActivityTracker>, ErrorResponse>(
+                ErrorResponse()
+            )
+        )
+        else emit(ApiResult.Success(response))
+    }.flowOn(defaultDispatcher)
 
-    fun fetchDateLocal() =
-        activityTrackerLocalDataSource.loadDate()
+    fun fetchDateLocal() = flow {
+        val response = activityTrackerLocalDataSource.loadDate()
+        if (response == 0) emit(ApiResult.Error<Long, ErrorResponse>(ErrorResponse()))
+        else emit(ApiResult.Success(response))
+    }.flowOn(defaultDispatcher)
 
     fun updateLocal(activityTrackers: Collection<ActivityTracker>) {
         activityTrackerLocalDataSource.save(activityTrackers)
         activityTrackerLocalDataSource.saveDate(Calendar.getInstance().time)
     }
-
 }

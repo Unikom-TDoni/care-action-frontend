@@ -11,7 +11,7 @@ data class NewsCategoryResponse(
         @SerializedName("id_category") val id: Int,
         @SerializedName("category_name") val name: String,
     )
-}
 
-fun NewsCategoryResponse.toNewsCategories(): Collection<NewsCategory> =
-    data.map { NewsCategory(it.id, it.icon, it.name) }
+    fun toNewsCategories(): Collection<NewsCategory> =
+        data.map { NewsCategory(it.id, it.icon, it.name) }
+}

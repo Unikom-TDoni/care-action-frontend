@@ -1,7 +1,7 @@
 package edu.rpl.careaction.feature.news.data
 
 import edu.rpl.careaction.core.domain.ErrorResponse
-import edu.rpl.careaction.core.domain.Repository
+import edu.rpl.careaction.core.data.Repository
 import edu.rpl.careaction.feature.news.data.dao.NewsRemoteDataSource
 import edu.rpl.careaction.feature.news.domain.dto.request.NewsDetailRequest
 import edu.rpl.careaction.feature.news.domain.dto.request.NewsOverviewRequest

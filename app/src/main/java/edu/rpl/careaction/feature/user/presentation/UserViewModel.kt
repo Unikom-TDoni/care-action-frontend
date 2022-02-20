@@ -26,7 +26,7 @@ class UserViewModel @Inject constructor(
 
     private val _defaultUserSharedFlow =
         MutableSharedFlow<ApiResult<ResponseBody, ErrorResponse>>()
-    val defaultUserUpdateSharedFlow = _defaultUserSharedFlow.asSharedFlow()
+    val defaultUserShardFlow = _defaultUserSharedFlow.asSharedFlow()
 
     fun login(loginRequest: LoginRequest) =
         viewModelScope.launch {

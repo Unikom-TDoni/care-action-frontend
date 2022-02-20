@@ -7,8 +7,8 @@ import edu.rpl.careaction.feature.user.data.UserRepository
 import edu.rpl.careaction.feature.user.domain.entity.User
 import edu.rpl.careaction.module.api.ApiResult
 import edu.rpl.careaction.core.domain.ErrorResponse
-import edu.rpl.careaction.feature.support.setting.data.SettingRepository
-import edu.rpl.careaction.feature.support.setting.domain.Setting
+import edu.rpl.careaction.core.data.ApplicationRepository
+import edu.rpl.careaction.core.domain.Setting
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -20,7 +20,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ApplicationViewModel @Inject constructor(
     private val userRepository: UserRepository,
-    private val settingRepository: SettingRepository
+    private val applicationRepository: ApplicationRepository
 ) : ViewModel() {
 
     private val _userSharedFlow = MutableSharedFlow<ApiResult<User, ErrorResponse>>()
@@ -54,7 +54,7 @@ class ApplicationViewModel @Inject constructor(
 
     fun fetchSetting() =
         viewModelScope.launch {
-            settingRepository.fetch().catch {
+            applicationRepository.fetchSetting().catch {
                 _settingSharedFlow.emit(
                     ApiResult.Error(
                         ErrorResponse(

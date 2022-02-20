@@ -1,15 +1,13 @@
 package edu.rpl.careaction.feature.user.data
 
-import android.util.Log
 import edu.rpl.careaction.core.domain.ErrorResponse
-import edu.rpl.careaction.core.domain.Repository
+import edu.rpl.careaction.core.data.Repository
 import edu.rpl.careaction.core.utility.DateUtility
 import edu.rpl.careaction.feature.user.data.dao.UserLocalDataSource
 import edu.rpl.careaction.feature.user.data.dao.UserRemoteDataSource
 import edu.rpl.careaction.feature.user.domain.dto.request.*
 import edu.rpl.careaction.feature.user.domain.dto.response.UserResponse
 import edu.rpl.careaction.feature.user.domain.dto.response.UserUpdateResponse
-import edu.rpl.careaction.feature.user.domain.dto.response.toUser
 import edu.rpl.careaction.feature.user.domain.entity.User
 import edu.rpl.careaction.module.api.ApiResult
 import edu.rpl.careaction.module.api.FlowApiBuilder
@@ -40,7 +38,7 @@ class UserRepository @Inject constructor(
             .setApiCall { userRemoteDataSource.logout(userLocalDataSource.load()!!.token) }
             .setDefaultErrorResponseInstance(ErrorResponse())
             .setManageApiSuccessResponse {
-                userLocalDataSource.logout()
+                userLocalDataSource.remove()
                 it
             }
             .setManageApiErrorResponse { onApiResponseError(it) }

@@ -11,7 +11,7 @@ data class NewsOverviewResponse(
         val thumbnail: String,
         @SerializedName("id_news") val id: Int,
     )
-}
 
-fun NewsOverviewResponse.toNewsOverviews(): Collection<NewsOverview> =
-    data.map { NewsOverview(it.id, it.title, it.thumbnail) }
+    fun toNewsOverviews(): Collection<NewsOverview> =
+        data.map { NewsOverview(it.id, it.title, it.thumbnail) }
+}

@@ -9,7 +9,9 @@ import com.bumptech.glide.Glide
 import edu.rpl.careaction.databinding.ItemActivityTrackerBinding
 import edu.rpl.careaction.feature.activity_tracker.domain.entity.ActivityTracker
 
-class ActivityTrackerRecyclerViewAdapter :
+class ActivityTrackerRecyclerViewAdapter(
+    private val onTaskIsChecked: (activityTrackers: Collection<ActivityTracker>) -> Unit
+) :
     RecyclerView.Adapter<ActivityTrackerRecyclerViewAdapter.ViewHolder>() {
 
     private val differCallback = object : DiffUtil.ItemCallback<ActivityTracker>() {
@@ -27,8 +29,6 @@ class ActivityTrackerRecyclerViewAdapter :
     }
 
     private val activityTrackerDiffer = AsyncListDiffer(this, differCallback)
-    var onTaskIsChecked: (activityTrackers: Collection<ActivityTracker>) -> Unit =
-        {}
 
     fun submitList(activityTrackers: List<ActivityTracker>) =
         activityTrackerDiffer.submitList(activityTrackers)

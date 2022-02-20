@@ -23,17 +23,18 @@ data class UserResponse(
         val picture: String,
         val birthdate: Date,
     )
-}
 
-fun UserResponse.toUser(): User =
-    User(
-        DateUtility.generateAgeFromDate(content.data.birthdate),
-        content.data.height,
-        content.data.weight,
-        content.data.name,
-        content.data.email,
-        content.tokenType.plus(' ').plus(content.token),
-        content.data.gender,
-        content.data.picture,
-        content.data.birthdate,
-    )
+    fun toUser(): User =
+        User(
+            DateUtility.generateAgeFromDate(content.data.birthdate),
+            content.data.height,
+            content.data.weight,
+            content.data.name,
+            content.data.email,
+            content.tokenType.plus(' ').plus(content.token),
+            content.data.gender,
+            content.data.picture,
+            content.data.birthdate,
+        )
+
+}

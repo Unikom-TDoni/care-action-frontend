@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.res.ResourcesCompat
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.lifecycle.Lifecycle
@@ -13,7 +14,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import edu.rpl.careaction.R
-import edu.rpl.careaction.core.builder.SpanLinkBuilder
+import edu.rpl.careaction.module.presentation.SpanLinkBuilder
 import edu.rpl.careaction.core.domain.ErrorResponse
 import edu.rpl.careaction.core.utility.DefaultApiCallbackUtility
 import edu.rpl.careaction.core.utility.TextFieldUtility
@@ -26,7 +27,7 @@ import edu.rpl.careaction.feature.user.presentation.validation.login.LoginFormEl
 import edu.rpl.careaction.feature.user.presentation.validation.login.LoginFormValidation
 import edu.rpl.careaction.module.api.ApiCallback
 import edu.rpl.careaction.module.api.ApiResult
-import edu.rpl.careaction.module.ui.ViewBindingFragment
+import edu.rpl.careaction.module.presentation.ViewBindingFragment
 import edu.rpl.careaction.module.validation.FormValidationCallback
 import edu.rpl.careaction.module.validation.FormValidationResult
 import kotlinx.coroutines.flow.collect
@@ -34,7 +35,7 @@ import kotlinx.coroutines.launch
 
 class LoginViewBindingFragment : ViewBindingFragment<FragmentLoginBinding>() {
 
-    private val userViewModel: UserViewModel by hiltNavGraphViewModels(R.id.welcome_nav_graph)
+    private val userViewModel: UserViewModel by hiltNavGraphViewModels(R.id.landing_nav_graph)
     override val bindingInflater: (LayoutInflater) -> ViewBinding = FragmentLoginBinding::inflate
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,8 +43,9 @@ class LoginViewBindingFragment : ViewBindingFragment<FragmentLoginBinding>() {
 
         initTextViewLink()
         initTextFieldEvent()
+        initNavigationEvent()
         initSharedFlowEvent(generateApiCallback())
-        initButtonEvent(generateFormValidation(), generateValidationCallback())
+        initButtonEvent(generateFormValidation(), generateFormValidationCallback())
     }
 
     private fun initSharedFlowEvent(apiCallback: ApiCallback<User, ErrorResponse>) =
@@ -73,13 +75,22 @@ class LoginViewBindingFragment : ViewBindingFragment<FragmentLoginBinding>() {
         }
     }
 
-    private fun initTextFieldEvent() {
+    private fun initTextFieldEvent() =
         TextFieldUtility.initOnTextFieldChangedCustomErrorEvent(
             mapOf(
                 binding.txtLayoutEmail to binding.txtFieldEmail,
                 binding.txtLayoutPassword to binding.txtFieldPassword,
             )
         )
+
+    private fun initNavigationEvent() {
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    findNavController().popBackStack()
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
     }
 
     private fun initTextViewLink() {
@@ -125,7 +136,7 @@ class LoginViewBindingFragment : ViewBindingFragment<FragmentLoginBinding>() {
             },
         )
 
-    private fun generateValidationCallback(): FormValidationCallback<LoginRequest> =
+    private fun generateFormValidationCallback(): FormValidationCallback<LoginRequest> =
         FormValidationCallback(
             successCallback = {
                 userViewModel.login(it)

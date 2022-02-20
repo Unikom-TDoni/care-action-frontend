@@ -7,21 +7,44 @@
 
     <fragment
         android:id="@+id/mainMenuViewBindingFragment"
-        android:name="edu.rpl.careaction.feature.menu.MainMenuViewBindingFragment"
+        android:name="edu.rpl.careaction.feature.page.main_menu.MainMenuViewBindingFragment"
         android:label="fragment_main_menu"
         tools:layout="@layout/fragment_main_menu">
         <action
             android:id="@+id/action_mainMenuViewBindingFragment_to_newsDetailViewBindingFragment"
-            app:destination="@id/newsDetailViewBindingFragment" />
+            app:destination="@id/newsDetailViewBindingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_mainMenuViewBindingFragment_to_updateProfileViewBindingFragment"
-            app:destination="@id/updateProfileViewBindingFragment" />
+            app:destination="@id/updateProfileViewBindingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_mainMenuViewBindingFragment_to_onProgressViewBindingFragment"
-            app:destination="@id/onProgressViewBindingFragment" />
+            app:destination="@id/onProgressViewBindingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_mainMenuViewBindingFragment_to_updatePasswordViewBindingFragment"
-            app:destination="@id/updatePasswordViewBindingFragment" />
+            app:destination="@id/updatePasswordViewBindingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainMenuViewBindingFragment_to_privacyPolicyViewBindingFragment"
+            app:destination="@id/privacyPolicyViewBindingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -41,7 +64,7 @@
         tools:layout="@layout/fragment_update_profile" />
     <fragment
         android:id="@+id/onProgressViewBindingFragment"
-        android:name="edu.rpl.careaction.feature.support.on_progress.OnProgressViewBindingFragment"
+        android:name="edu.rpl.careaction.feature.page.on_progress.OnProgressViewBindingFragment"
         android:label="fragment_on_progress"
         tools:layout="@layout/fragment_on_progress" />
     <fragment
@@ -49,5 +72,10 @@
         android:name="edu.rpl.careaction.feature.user.presentation.fragment.UpdatePasswordViewBindingFragment"
         android:label="fragment_update_password"
         tools:layout="@layout/fragment_update_password" />
+    <fragment
+        android:id="@+id/privacyPolicyViewBindingFragment"
+        android:name="edu.rpl.careaction.feature.page.privacy.PrivacyPolicyViewBindingFragment"
+        android:label="fragment_privacy_policy"
+        tools:layout="@layout/fragment_privacy_policy" />
 
 </navigation>

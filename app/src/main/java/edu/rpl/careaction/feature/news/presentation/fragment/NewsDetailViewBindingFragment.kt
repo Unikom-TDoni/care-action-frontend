@@ -1,6 +1,8 @@
 package edu.rpl.careaction.feature.news.presentation.fragment
 
 import android.os.Bundle
+import android.text.Html
+import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import androidx.activity.OnBackPressedCallback
@@ -22,7 +24,7 @@ import edu.rpl.careaction.feature.news.domain.entity.NewsDetail
 import edu.rpl.careaction.feature.news.presentation.NewsViewModel
 import edu.rpl.careaction.module.api.ApiCallback
 import edu.rpl.careaction.module.api.ApiResult
-import edu.rpl.careaction.module.ui.ViewBindingFragment
+import edu.rpl.careaction.module.presentation.ViewBindingFragment
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -77,9 +79,11 @@ class NewsDetailViewBindingFragment : ViewBindingFragment<FragmentNewsDetailBind
                 DefaultApiCallbackUtility.successCallback()
 
                 binding.tittle.text = it.response.title
-                binding.content.text = it.response.content
                 binding.txtViewName.text = it.response.author
                 binding.toolbarTitle.text = it.response.category
+                binding.content.text =
+                    Html.fromHtml(it.response.content, Html.FROM_HTML_MODE_COMPACT)
+                binding.content.movementMethod = LinkMovementMethod.getInstance()
                 Glide.with(this).load(it.response.thumbnail).placeholder(R.drawable.img_placeholder)
                     .into(binding.image)
                 binding.txtViewDate.text = DateUtility.convertDateToString(it.response.releaseDate)

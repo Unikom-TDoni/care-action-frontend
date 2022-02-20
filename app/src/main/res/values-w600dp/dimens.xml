@@ -3,43 +3,48 @@
     <integer name="txt_tittle_max_line" type="dimen">3</integer>
 
     <!-- Card -->
-    <dimen name="card_square_tiny_size">60dp</dimen>
-    <dimen name="card_square_medium_size">80dp</dimen>
-    <dimen name="card_square_large_size">120dp</dimen>
-    <dimen name="card_rectangle_extra_small_height">60dp</dimen>
-    <dimen name="card_rectangle_small_height">80dp</dimen>
-    <dimen name="card_rectangle_medium_height">160dp</dimen>
-    <dimen name="card_rectangle_large_height">240dp</dimen>
-    <dimen name="card_default_padding">12dp</dimen>
-    <dimen name="card_big_padding">20dp</dimen>
+    <dimen name="card_square_tiny_size">80dp</dimen>
+    <dimen name="card_square_medium_size">120dp</dimen>
+    <dimen name="card_square_large_size">140dp</dimen>
+    <dimen name="card_rectangle_extra_small_height">80dp</dimen>
+    <dimen name="card_rectangle_small_height">100dp</dimen>
+    <dimen name="card_rectangle_medium_height">200dp</dimen>
+    <dimen name="card_rectangle_large_height">280dp</dimen>
+    <dimen name="card_default_padding">16dp</dimen>
+    <dimen name="card_big_padding">22dp</dimen>
     <dimen name="card_default_corner_radius">8dp</dimen>
 
     <!-- Space -->
-    <dimen name="extra_extra_tiny_space">4dp</dimen>
-    <dimen name="extra_tiny_space">10dp</dimen>
-    <dimen name="tiny_space">14dp</dimen>
-    <dimen name="small_space">16dp</dimen>
-    <dimen name="medium_space">24dp</dimen>
-    <dimen name="large_space">28dp</dimen>
-    <dimen name="extra_extra_large_space">36dp</dimen>
-    <dimen name="bottom_nav_menu_space">90dp</dimen>
-
+    <dimen name="extra_extra_tiny_space">8dp</dimen>
+    <dimen name="extra_tiny_space">14dp</dimen>
+    <dimen name="tiny_space">16dp</dimen>
+    <dimen name="small_space">20dp</dimen>
+    <dimen name="medium_space">28dp</dimen>
+    <dimen name="large_space">32dp</dimen>
+    <dimen name="extra_extra_large_space">42dp</dimen>
+    <dimen name="bottom_nav_menu_space">75dp</dimen>
 
     <!--Text Fields-->
-    <dimen name="txt_field_min_height">48dp</dimen>
+    <dimen name="txt_field_min_height">64dp</dimen>
     <dimen name="txt_field_drawable_start_space">12dp</dimen>
+    <dimen name="txt_field_thickness_width">2dp</dimen>
 
     <!-- Button -->
-    <dimen name="btn_fab_margin_size">32dp</dimen>
-    <dimen name="btn_fab_progress_size">90dp</dimen>
+    <dimen name="btn_fab_size">75dp</dimen>
+    <dimen name="btn_default_padding">16dp</dimen>
+    <dimen name="btn_fab_margin_size">48dp</dimen>
+    <dimen name="btn_fab_progress_size">125dp</dimen>
+    <dimen name="btn_fab_max_image_size">35dp</dimen>
+    <dimen name="btn_fab_content_margin_size">148dp</dimen>
+    <dimen name="btn_fab_progress_thickness">6dp</dimen>
 
     <!-- Text -->
-    <dimen name="txt_extra_tiny_size">12sp</dimen>
-    <dimen name="txt_tiny_size">14sp</dimen>
-    <dimen name="txt_small_size">16sp</dimen>
-    <dimen name="txt_medium_size">20sp</dimen>
-    <dimen name="txt_large_size">26sp</dimen>
-    <dimen name="txt_extra_large_size">36sp</dimen>
+    <dimen name="txt_extra_tiny_size">16sp</dimen>
+    <dimen name="txt_tiny_size">18sp</dimen>
+    <dimen name="txt_small_size">22sp</dimen>
+    <dimen name="txt_medium_size">28sp</dimen>
+    <dimen name="txt_large_size">32sp</dimen>
+    <dimen name="txt_extra_large_size">48sp</dimen>
 
     <!-- Guidelines -->
     <fraction name="tight_guideline_left_point" type="dimen">0.15</fraction>

@@ -7,12 +7,16 @@
 
     <fragment
         android:id="@+id/homeViewBindingFragment"
-        android:name="edu.rpl.careaction.feature.menu.home.presentation.HomeViewBindingFragment"
+        android:name="edu.rpl.careaction.feature.page.home.presentation.HomeViewBindingFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_menu_home">
         <action
             android:id="@+id/action_homeViewBindingFragment_to_newsOverviewViewBindingFragment"
-            app:destination="@id/newsOverviewViewBindingFragment" />
+            app:destination="@id/newsOverviewViewBindingFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/healthyLifestyleRoutineViewBindingFragment"
@@ -21,7 +25,7 @@
         tools:layout="@layout/fragment_menu_activity_tracker" />
     <fragment
         android:id="@+id/profileViewBindingFragment"
-        android:name="edu.rpl.careaction.feature.menu.profile.ProfileViewBindingFragment"
+        android:name="edu.rpl.careaction.feature.page.profile.ProfileViewBindingFragment"
         android:label="fragment_menu_profile"
         tools:layout="@layout/fragment_menu_profile" />
     <fragment

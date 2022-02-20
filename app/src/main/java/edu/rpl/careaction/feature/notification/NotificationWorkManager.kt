@@ -5,7 +5,6 @@ import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import edu.rpl.careaction.core.config.UniqueWorkerKey
-import edu.rpl.careaction.feature.notification.worker.NotificationWorker
 import java.util.concurrent.TimeUnit
 
 class NotificationWorkManager {

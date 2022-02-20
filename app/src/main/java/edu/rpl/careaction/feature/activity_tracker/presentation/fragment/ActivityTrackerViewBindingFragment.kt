@@ -22,7 +22,7 @@ import edu.rpl.careaction.feature.activity_tracker.presentation.adapter.Activity
 import edu.rpl.careaction.feature.activity_tracker.presentation.worker.ActivityTrackerWorkManager
 import edu.rpl.careaction.module.api.ApiCallback
 import edu.rpl.careaction.module.api.ApiResult
-import edu.rpl.careaction.module.ui.ViewBindingFragment
+import edu.rpl.careaction.module.presentation.ViewBindingFragment
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.util.*
@@ -30,20 +30,24 @@ import java.util.*
 class ActivityTrackerViewBindingFragment :
     ViewBindingFragment<FragmentMenuActivityTrackerBinding>() {
 
-    private val activityTrackerWorkManager = ActivityTrackerWorkManager()
     private val activityTrackerViewModel: ActivityTrackerViewModel by hiltNavGraphViewModels(R.id.bottom_toolbar_menu_nav_graph)
-    private val activityTrackerRecyclerViewAdapter =
-        ActivityTrackerRecyclerViewAdapter()
-
     override val bindingInflater: (LayoutInflater) -> ViewBinding =
         FragmentMenuActivityTrackerBinding::inflate
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initRecyclerview()
+        val activityTrackerRecyclerViewAdapter =
+            ActivityTrackerRecyclerViewAdapter { activityTrackerViewModel.updateLocal(it) }
+
         initNavigationEvent()
-        initSharedFlowEvent(generateApiCallback())
+        initRecyclerview(activityTrackerRecyclerViewAdapter)
+        initSharedFlowEvent(
+            generateApiCallback(
+                activityTrackerRecyclerViewAdapter,
+                ActivityTrackerWorkManager()
+            )
+        )
     }
 
     override fun onResume() {
@@ -75,14 +79,15 @@ class ActivityTrackerViewBindingFragment :
             }
         }
 
-    private fun initRecyclerview() {
+    private fun initRecyclerview(activityTrackerRecyclerViewAdapter: ActivityTrackerRecyclerViewAdapter) {
         binding.recyclerViewOverview.layoutManager = LinearLayoutManager(context)
-        activityTrackerRecyclerViewAdapter.onTaskIsChecked =
-            { activityTrackerViewModel.updateLocal(it) }
         binding.recyclerViewOverview.adapter = activityTrackerRecyclerViewAdapter
     }
 
-    private fun generateApiCallback(): ApiCallback<Collection<ActivityTracker>, ErrorResponse> =
+    private fun generateApiCallback(
+        activityTrackerRecyclerViewAdapter: ActivityTrackerRecyclerViewAdapter,
+        activityTrackerWorkManager: ActivityTrackerWorkManager
+    ): ApiCallback<Collection<ActivityTracker>, ErrorResponse> =
         ApiCallback(
             successCallback = {
                 DefaultApiCallbackUtility.successCallback()

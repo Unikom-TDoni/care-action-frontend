@@ -25,9 +25,9 @@
         style="@style/textHeadingOne"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
         android:layout_marginBottom="@dimen/extra_extra_large_space"
         android:text="@string/txt_view_register_tittle"
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/txt_layout_name"
         app:layout_constraintEnd_toEndOf="@id/guideline_right"
         app:layout_constraintStart_toStartOf="@id/guideline_left"
@@ -46,7 +46,8 @@
         app:layout_constraintBottom_toTopOf="@+id/txt_layout_email"
         app:layout_constraintEnd_toEndOf="@id/guideline_right"
         app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/txt_view_tittle">
+        app:layout_constraintTop_toBottomOf="@+id/txt_view_tittle"
+        app:errorTextAppearance="@style/error_appearance">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txt_field_name"
@@ -72,7 +73,8 @@
         app:layout_constraintBottom_toTopOf="@+id/txt_layout_password"
         app:layout_constraintEnd_toEndOf="@id/guideline_right"
         app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/txt_layout_name">
+        app:layout_constraintTop_toBottomOf="@+id/txt_layout_name"
+        app:errorTextAppearance="@style/error_appearance">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txt_field_email"
@@ -100,7 +102,8 @@
         app:layout_constraintEnd_toEndOf="@id/guideline_right"
         app:layout_constraintStart_toStartOf="@id/guideline_left"
         app:layout_constraintTop_toBottomOf="@+id/txt_layout_email"
-        app:passwordToggleEnabled="true">
+        app:passwordToggleEnabled="true"
+        app:errorTextAppearance="@style/error_appearance">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txt_field_password"
@@ -119,10 +122,11 @@
         android:id="@+id/check_box"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/large_space"
+        android:layout_marginBottom="@dimen/small_space"
         android:gravity="top"
         android:padding="4dp"
         android:text="@string/check_box_policy_hint"
+        android:textSize="@dimen/txt_tiny_size"
         app:layout_constraintBottom_toTopOf="@id/btn_register"
         app:layout_constraintEnd_toEndOf="@id/guideline_right"
         app:layout_constraintStart_toStartOf="@id/guideline_left"

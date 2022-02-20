@@ -18,7 +18,6 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class ApplicationActivity : AppCompatActivity() {
 
-    private val notificationWorkManager = NotificationWorkManager()
     private val applicationViewModel: ApplicationViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +40,7 @@ class ApplicationActivity : AppCompatActivity() {
                             if (it.response.isHaveCompleteProfile())
                                 findNavController(R.id.fragment_container_view).navigate(R.id.action_to_menuNavGraph)
                             else
-                                findNavController(R.id.fragment_container_view).navigate(R.id.action_welcomeViewBindingFragment_to_registerProfileViewBindingFragment)
+                                findNavController(R.id.fragment_container_view).navigate(R.id.action_landingViewBindingFragment_to_registerProfileViewBindingFragment)
                         }
                         else -> applicationViewModel.hideSplashScreenWhenActive()
                     }
@@ -52,7 +51,7 @@ class ApplicationActivity : AppCompatActivity() {
             launch {
                 applicationViewModel.settingSharedFlow.collect {
                     if (it is ApiResult.Success)
-                        if (it.response.isNotificationActive) notificationWorkManager.start(this@ApplicationActivity)
+                        if (it.response.isNotificationActive) NotificationWorkManager().start(this@ApplicationActivity)
                     this.cancel()
                 }
             }

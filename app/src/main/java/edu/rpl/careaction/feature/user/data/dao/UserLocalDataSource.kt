@@ -23,6 +23,6 @@ class UserLocalDataSource @Inject constructor(
             applicationSharedPreferenceManager.getString(SharedPreferenceKey.USER), User::class.java
         )
 
-    fun logout() =
+    fun remove() =
         applicationSharedPreferenceManager.remove(setOf(SharedPreferenceKey.USER))
 }

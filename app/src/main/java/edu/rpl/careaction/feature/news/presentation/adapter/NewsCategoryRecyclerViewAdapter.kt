@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import edu.rpl.careaction.R
 import edu.rpl.careaction.databinding.ItemNewsCategoryBinding
-import edu.rpl.careaction.feature.menu.home.presentation.HomeViewBindingFragmentDirections
+import edu.rpl.careaction.feature.page.home.presentation.HomeViewBindingFragmentDirections
 import edu.rpl.careaction.feature.news.domain.entity.NewsCategory
 
 class NewsCategoryRecyclerViewAdapter :
@@ -25,8 +25,8 @@ class NewsCategoryRecyclerViewAdapter :
 
     private val newsCategoriesDiffer = AsyncListDiffer(this, differCallback)
 
-    fun submitList(newscategories: List<NewsCategory>) =
-        newsCategoriesDiffer.submitList(newscategories)
+    fun submitList(newsCategories: List<NewsCategory>) =
+        newsCategoriesDiffer.submitList(newsCategories)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(

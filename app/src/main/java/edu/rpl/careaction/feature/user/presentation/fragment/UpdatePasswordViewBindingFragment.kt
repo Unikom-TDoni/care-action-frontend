@@ -1,9 +1,9 @@
 package edu.rpl.careaction.feature.user.presentation.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.lifecycle.Lifecycle
@@ -22,7 +22,7 @@ import edu.rpl.careaction.feature.user.presentation.validation.account.UpdatePas
 import edu.rpl.careaction.feature.user.presentation.validation.account.UpdatePasswordFormValidation
 import edu.rpl.careaction.module.api.ApiCallback
 import edu.rpl.careaction.module.api.ApiResult
-import edu.rpl.careaction.module.ui.ViewBindingFragment
+import edu.rpl.careaction.module.presentation.ViewBindingFragment
 import edu.rpl.careaction.module.validation.FormValidationCallback
 import edu.rpl.careaction.module.validation.FormValidationResult
 import kotlinx.coroutines.flow.collect
@@ -72,7 +72,7 @@ class UpdatePasswordViewBindingFragment : ViewBindingFragment<FragmentUpdatePass
     private fun initSharedFlowEvent(apiCallback: ApiCallback<ResponseBody, ErrorResponse>) =
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                userViewModel.defaultUserUpdateSharedFlow.collect {
+                userViewModel.defaultUserShardFlow.collect {
                     when (it) {
                         is ApiResult.Error -> apiCallback.errorCallback(it)
                         is ApiResult.Success -> apiCallback.successCallback(it)
@@ -106,9 +106,12 @@ class UpdatePasswordViewBindingFragment : ViewBindingFragment<FragmentUpdatePass
         ApiCallback(
             successCallback = {
                 DefaultApiCallbackUtility.successCallback()
-                binding.txtFieldPassword.text?.clear()
-                binding.txtFieldNewPassword.text?.clear()
-                binding.txtFieldConfirmationPassword.text?.clear()
+                clearTxtField()
+                Toast.makeText(
+                    context,
+                    getString(R.string.update_password_success_message),
+                    Toast.LENGTH_SHORT
+                ).show()
             },
             loadingCallback = {
                 DefaultApiCallbackUtility.loadingCallback(parentFragmentManager)
@@ -119,8 +122,7 @@ class UpdatePasswordViewBindingFragment : ViewBindingFragment<FragmentUpdatePass
                     findNavController(),
                     it.response
                 )
-
-                binding.txtFieldConfirmationPassword.text?.clear()
+                clearTxtField()
             }
         )
 
@@ -130,6 +132,7 @@ class UpdatePasswordViewBindingFragment : ViewBindingFragment<FragmentUpdatePass
                 userViewModel.updatePassword(it)
             },
             errorCallback = {
+                clearTxtField()
                 it[R.id.txt_field_password]?.let { error ->
                     binding.txtLayoutPassword.error = getString(error.value)
                 }
@@ -143,5 +146,11 @@ class UpdatePasswordViewBindingFragment : ViewBindingFragment<FragmentUpdatePass
                 }
             }
         )
+
+    private fun clearTxtField() {
+        binding.txtFieldPassword.text?.clear()
+        binding.txtFieldNewPassword.text?.clear()
+        binding.txtFieldConfirmationPassword.text?.clear()
+    }
 
 }

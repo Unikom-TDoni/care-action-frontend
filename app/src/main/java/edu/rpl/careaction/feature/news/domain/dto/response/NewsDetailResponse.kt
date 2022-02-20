@@ -19,14 +19,15 @@ data class NewsDetailResponse(
             val name: String
         )
     }
-}
 
-fun NewsDetailResponse.toNewsDetail(): NewsDetail =
-    NewsDetail(
-        data.title,
-        data.user.name,
-        data.content,
-        data.name,
-        DateUtility.convertStringToTimestamp(data.createdDate),
-        data.thumbnail
-    )
+    fun toNewsDetail(): NewsDetail =
+        NewsDetail(
+            data.title,
+            data.user.name,
+            data.content,
+            data.name,
+            DateUtility.convertStringToTimestamp(data.createdDate),
+            data.thumbnail
+        )
+
+}

@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.activityViewModels
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.lifecycle.Lifecycle
@@ -26,7 +28,7 @@ import edu.rpl.careaction.feature.user.presentation.validation.profile.register.
 import edu.rpl.careaction.feature.user.presentation.validation.profile.register.RegisterProfileFormValidation
 import edu.rpl.careaction.module.api.ApiCallback
 import edu.rpl.careaction.module.api.ApiResult
-import edu.rpl.careaction.module.ui.ViewBindingFragment
+import edu.rpl.careaction.module.presentation.ViewBindingFragment
 import edu.rpl.careaction.module.validation.FormValidationCallback
 import edu.rpl.careaction.module.validation.FormValidationResult
 import kotlinx.coroutines.flow.collect
@@ -37,7 +39,7 @@ class RegisterProfileViewBindingFragment :
     ViewBindingFragment<FragmentRegisterProfileBinding>() {
 
     private val applicationViewModel: ApplicationViewModel by activityViewModels()
-    private val userViewModel: UserViewModel by hiltNavGraphViewModels(R.id.welcome_nav_graph)
+    private val userViewModel: UserViewModel by hiltNavGraphViewModels(R.id.landing_nav_graph)
 
     override val bindingInflater: (LayoutInflater) -> ViewBinding =
         FragmentRegisterProfileBinding::inflate
@@ -47,15 +49,16 @@ class RegisterProfileViewBindingFragment :
 
         initDropDownValue()
         initTextFieldEvent()
+        initNavigationEvent()
         initSharedFlowEvent(generateApiCallback())
-        initButtonEvent(generateFormValidation(), generateValidationCallback())
+        initButtonEvent(generateFormValidation(), generateFormValidationCallback())
         applicationViewModel.hideSplashScreenWhenActive()
     }
 
     private fun initSharedFlowEvent(apiCallback: ApiCallback<ResponseBody, ErrorResponse>) =
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                userViewModel.defaultUserUpdateSharedFlow.collect {
+                userViewModel.defaultUserShardFlow.collect {
                     when (it) {
                         is ApiResult.Success -> apiCallback.successCallback(it)
                         is ApiResult.Loading -> apiCallback.loadingCallback(it)
@@ -97,6 +100,23 @@ class RegisterProfileViewBindingFragment :
         }
     }
 
+    private fun initNavigationEvent() {
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true) {
+                var pressedTime = 0L
+                override fun handleOnBackPressed() {
+                    if (pressedTime + 2000 > System.currentTimeMillis()) requireActivity().finish()
+                    else Toast.makeText(
+                        requireContext(),
+                        getString(R.string.toast_back_to_exit),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    pressedTime = System.currentTimeMillis()
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+    }
+
     private fun initDropDownValue() {
         val adapter = ArrayAdapter(
             requireContext(),
@@ -134,7 +154,7 @@ class RegisterProfileViewBindingFragment :
             }
         )
 
-    private fun generateValidationCallback(): FormValidationCallback<RegisterProfileRequest> =
+    private fun generateFormValidationCallback(): FormValidationCallback<RegisterProfileRequest> =
         FormValidationCallback(
             successCallback = {
                 userViewModel.registerProfile(it)

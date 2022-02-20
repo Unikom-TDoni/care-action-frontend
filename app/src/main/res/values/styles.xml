@@ -34,4 +34,15 @@
         <item name="android:background">@drawable/bg_txt_field_state</item>
         <item name="android:drawablePadding">@dimen/txt_field_drawable_start_space</item>
     </style>
+
+    <style name="buttonStyle" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/txt_small_size</item>
+        <item name="android:padding">@dimen/btn_default_padding</item>
+    </style>
+
+    <style name="error_appearance" parent="Widget.Material3.TextInputLayout.OutlinedBox.Dense">
+        <item name="android:textSize">@dimen/txt_extra_tiny_size</item>
+    </style>
+
 </resources>

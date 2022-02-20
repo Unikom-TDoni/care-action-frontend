@@ -36,6 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/txt_view_activity_tracker_tittle"
+            android:textSize="@dimen/txt_small_size"
             android:textColor="@color/green" />
 
     </androidx.appcompat.widget.Toolbar>

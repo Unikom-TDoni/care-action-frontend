@@ -17,16 +17,18 @@ import edu.rpl.careaction.R
 import edu.rpl.careaction.core.domain.ErrorResponse
 import edu.rpl.careaction.core.utility.DefaultApiCallbackUtility
 import edu.rpl.careaction.databinding.FragmentNewsOverviewBinding
-import edu.rpl.careaction.feature.menu.MainMenuViewBindingFragmentDirections
 import edu.rpl.careaction.feature.news.domain.dto.request.NewsOverviewRequest
 import edu.rpl.careaction.feature.news.domain.entity.NewsOverview
 import edu.rpl.careaction.feature.news.presentation.NewsViewModel
 import edu.rpl.careaction.feature.news.presentation.adapter.NewsOverviewRecyclerViewAdapter
+import edu.rpl.careaction.feature.page.main_menu.MainMenuViewBindingFragmentDirections
 import edu.rpl.careaction.module.api.ApiCallback
 import edu.rpl.careaction.module.api.ApiResult
-import edu.rpl.careaction.module.ui.ViewBindingFragment
+import edu.rpl.careaction.module.presentation.ViewBindingFragment
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import androidx.recyclerview.widget.RecyclerView
+
 
 class NewsOverviewViewBindingFragment : ViewBindingFragment<FragmentNewsOverviewBinding>() {
 
@@ -41,20 +43,18 @@ class NewsOverviewViewBindingFragment : ViewBindingFragment<FragmentNewsOverview
 
         val recyclerViewAdapter = generateRecyclerViewAdapter()
 
+        initSwipeLayout()
         initNavigationEvent()
-        initRecyclerView(recyclerViewAdapter)
         initSearchEvent(recyclerViewAdapter)
+        initRecyclerView(recyclerViewAdapter)
         initSharedFlowEvent(generateApiCallback(recyclerViewAdapter))
     }
 
     override fun onResume() {
         super.onResume()
 
+        fetch()
         initViewDefaultValue()
-        val idCategory =
-            if (newsOverviewViewBindingFragmentArgs.idCategory == -1) null
-            else newsOverviewViewBindingFragmentArgs.idCategory
-        newsViewModel.fetchOverview(NewsOverviewRequest(idCategory))
     }
 
     private fun initViewDefaultValue() {
@@ -62,6 +62,14 @@ class NewsOverviewViewBindingFragment : ViewBindingFragment<FragmentNewsOverview
         binding.searchBar.isIconified = true
         binding.tittle.text =
             newsOverviewViewBindingFragmentArgs.categoryName ?: getString(R.string.txt_view_news)
+    }
+
+    private fun initSwipeLayout() {
+        binding.swipeLayout.setColorSchemeResources(R.color.green)
+        binding.swipeLayout.setOnRefreshListener {
+            fetch()
+            binding.swipeLayout.isRefreshing = false
+        }
     }
 
     private fun initSearchEvent(newsOverviewRecyclerViewAdapter: NewsOverviewRecyclerViewAdapter) {
@@ -115,9 +123,26 @@ class NewsOverviewViewBindingFragment : ViewBindingFragment<FragmentNewsOverview
         }
 
     private fun initRecyclerView(adapter: NewsOverviewRecyclerViewAdapter) {
+        val layoutManager = LinearLayoutManager(context)
         binding.viewNewsOverview.recyclerViewOverview.adapter = adapter
-        binding.viewNewsOverview.recyclerViewOverview.layoutManager = LinearLayoutManager(context)
+        binding.viewNewsOverview.recyclerViewOverview.layoutManager = layoutManager
+        binding.viewNewsOverview.recyclerViewOverview.addOnScrollListener(object :
+            RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                binding.swipeLayout.isEnabled =
+                    layoutManager.findFirstCompletelyVisibleItemPosition() == 0
+            }
+        })
     }
+
+    private fun fetch() =
+        newsViewModel.fetchOverview(
+            NewsOverviewRequest(
+                if (newsOverviewViewBindingFragmentArgs.idCategory == -1) null
+                else newsOverviewViewBindingFragmentArgs.idCategory
+            )
+        )
 
     private fun generateRecyclerViewAdapter(): NewsOverviewRecyclerViewAdapter =
         NewsOverviewRecyclerViewAdapter {

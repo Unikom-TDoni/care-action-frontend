@@ -12,7 +12,7 @@ data class ActivityTrackerResponse(
         val checked: Int,
         @SerializedName("activity_name") val name: String
     )
-}
 
-fun ActivityTrackerResponse.toActivityTrackers(): Collection<ActivityTracker> =
-    data.map { ActivityTracker(it.id, it.icon, it.name, it.checked == 1) }
+    fun toActivityTrackers(): Collection<ActivityTracker> =
+        data.map { ActivityTracker(it.id, it.icon, it.name, it.checked == 1) }
+}

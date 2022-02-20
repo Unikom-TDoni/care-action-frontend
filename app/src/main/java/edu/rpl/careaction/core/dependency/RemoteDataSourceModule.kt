@@ -5,7 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import edu.rpl.careaction.feature.news.data.dao.NewsRemoteDataSource
-import edu.rpl.careaction.feature.support.motivation.data.dao.MotivationRemoteDataSource
+import edu.rpl.careaction.feature.motivation.data.dao.MotivationRemoteDataSource
 import edu.rpl.careaction.feature.activity_tracker.data.dao.ActivityTrackerRemoteDataSource
 import edu.rpl.careaction.feature.user.data.dao.UserRemoteDataSource
 import edu.rpl.careaction.core.builder.RetrofitBuilder

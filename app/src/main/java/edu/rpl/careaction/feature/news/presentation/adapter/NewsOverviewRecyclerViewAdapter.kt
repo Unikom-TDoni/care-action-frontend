@@ -36,15 +36,14 @@ class NewsOverviewRecyclerViewAdapter(
         filteredItems = newsOverviewsDiffer.currentList
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
+        ViewHolder(
             ItemNewsOverviewBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
             )
         )
-    }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val newsOverview = newsOverviewsDiffer.currentList[position]

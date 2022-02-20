@@ -26,17 +26,34 @@ class ActivityTrackerViewModel @Inject constructor(
 
     fun fetch(activityTrackerRequest: ActivityTrackerRequest) =
         viewModelScope.launch {
-            activityTrackerRepository.fetch(activityTrackerRequest).catch {
-                _activityTrackerSharedFlow.emit(
-                    ApiResult.Error(
-                        ErrorResponse(
-                            throwable = it
+            activityTrackerRepository.fetchLocal()
+                .catch {
+                    _activityTrackerSharedFlow.emit(
+                        ApiResult.Error(
+                            ErrorResponse(
+                                throwable = it
+                            )
                         )
                     )
-                )
-            }.collect {
-                _activityTrackerSharedFlow.emit(it)
-            }
+                }
+                .collect {
+                    when (it) {
+                        is ApiResult.Success ->
+                            _activityTrackerSharedFlow.emit(it)
+                        else -> activityTrackerRepository.fetch(activityTrackerRequest)
+                            .catch { error ->
+                                _activityTrackerSharedFlow.emit(
+                                    ApiResult.Error(
+                                        ErrorResponse(
+                                            throwable = error
+                                        )
+                                    )
+                                )
+                            }.collect { remoteResult ->
+                                _activityTrackerSharedFlow.emit(remoteResult)
+                            }
+                    }
+                }
         }
 
     fun updateLocal(healthyLifestyleRoutines: Collection<ActivityTracker>) =

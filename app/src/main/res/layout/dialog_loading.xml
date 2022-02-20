@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.support.loading.LoadingDialogFragment">
+    android:background="@android:color/transparent"
+    android:backgroundTint="@android:color/transparent"
+    tools:context=".feature.page.loading.LoadingDialogFragment">
 
     <ProgressBar
         android:layout_width="wrap_content"

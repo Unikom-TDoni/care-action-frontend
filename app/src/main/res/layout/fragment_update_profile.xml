@@ -46,7 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/card_rectangle_large_height"
                 android:layout_marginBottom="@dimen/medium_space"
-                android:background="@android:color/white"
+                android:background="@color/light_green"
                 android:contentDescription="@string/hello_world"
                 app:layout_constraintBottom_toTopOf="@id/txt_layout_gender"
                 app:layout_constraintEnd_toEndOf="@id/guideline_right"
@@ -59,7 +59,6 @@
                 android:layout_height="@dimen/card_square_large_size"
                 android:layout_marginBottom="@dimen/tiny_space"
                 app:layout_constraintBottom_toTopOf="@id/txt_layout_name"
-                app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="@id/background"
                 app:layout_constraintStart_toStartOf="@id/background"
                 app:layout_constraintTop_toTopOf="@id/background"
@@ -72,7 +71,9 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 app:boxBackgroundColor="@android:color/transparent"
+                app:boxStrokeWidth="@dimen/txt_field_thickness_width"
                 app:errorIconDrawable="@null"
+                app:errorTextAppearance="@style/error_appearance"
                 app:hintEnabled="false"
                 app:layout_constraintBottom_toBottomOf="@+id/background"
                 app:layout_constraintEnd_toEndOf="@id/guideline_right"
@@ -84,8 +85,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
-                    android:gravity="center"
-                    android:hint="@string/txt_field_name_hint" />
+                    android:gravity="center_horizontal|bottom"
+                    android:hint="@string/txt_field_name_hint"
+                    android:minHeight="@dimen/txt_field_min_height"
+                    android:padding="@dimen/card_default_padding"
+                    android:textSize="@dimen/txt_tiny_size" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -95,7 +99,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/medium_space"
+                app:boxStrokeWidth="@dimen/txt_field_thickness_width"
                 app:errorIconDrawable="@null"
+                app:errorTextAppearance="@style/error_appearance"
                 app:layout_constraintBottom_toTopOf="@+id/txt_layout_date_birth"
                 app:layout_constraintEnd_toEndOf="@id/guideline_right"
                 app:layout_constraintStart_toStartOf="@id/guideline_left"
@@ -107,7 +113,10 @@
                     android:layout_height="match_parent"
                     android:cursorVisible="false"
                     android:focusable="false"
-                    android:hint="@string/spinner_gender_prompt" />
+                    android:hint="@string/spinner_gender_prompt"
+                    android:minHeight="@dimen/txt_field_min_height"
+                    android:padding="@dimen/card_default_padding"
+                    android:textSize="@dimen/txt_tiny_size" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -117,11 +126,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/medium_space"
+                app:boxStrokeWidth="@dimen/txt_field_thickness_width"
                 app:errorIconDrawable="@null"
+                app:errorTextAppearance="@style/error_appearance"
                 app:layout_constraintBottom_toTopOf="@+id/txt_layout_weight"
                 app:layout_constraintEnd_toEndOf="@id/guideline_right"
                 app:layout_constraintStart_toStartOf="@id/guideline_left"
-
                 app:layout_constraintTop_toBottomOf="@+id/txt_layout_gender">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -130,7 +140,10 @@
                     android:layout_height="match_parent"
                     android:cursorVisible="false"
                     android:focusable="false"
-                    android:hint="@string/txt_field_date_of_birth_hint" />
+                    android:hint="@string/txt_field_date_of_birth_hint"
+                    android:minHeight="@dimen/txt_field_min_height"
+                    android:padding="@dimen/card_default_padding"
+                    android:textSize="@dimen/txt_tiny_size" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -140,7 +153,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/medium_space"
+                app:boxStrokeWidth="@dimen/txt_field_thickness_width"
                 app:errorIconDrawable="@null"
+                app:errorTextAppearance="@style/error_appearance"
                 app:layout_constraintBottom_toTopOf="@+id/txt_layout_height"
                 app:layout_constraintEnd_toStartOf="@id/guideline_right"
                 app:layout_constraintStart_toStartOf="@id/guideline_left"
@@ -151,7 +166,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="@string/txt_field_weight_hint"
-                    android:inputType="numberSigned" />
+                    android:inputType="numberSigned"
+                    android:maxLength="3"
+                    android:minHeight="@dimen/txt_field_min_height"
+                    android:padding="@dimen/card_default_padding"
+                    android:textSize="@dimen/txt_tiny_size" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -161,7 +180,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/medium_space"
+                app:boxStrokeWidth="@dimen/txt_field_thickness_width"
                 app:errorIconDrawable="@null"
+                app:errorTextAppearance="@style/error_appearance"
                 app:layout_constraintBottom_toTopOf="@id/button"
                 app:layout_constraintEnd_toEndOf="@id/guideline_right"
                 app:layout_constraintStart_toStartOf="@id/guideline_left"
@@ -172,7 +193,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="@string/txt_field_height_hint"
-                    android:inputType="numberSigned" />
+                    android:inputType="numberSigned"
+                    android:maxLength="3"
+                    android:minHeight="@dimen/txt_field_min_height"
+                    android:padding="@dimen/card_default_padding"
+                    android:textSize="@dimen/txt_tiny_size" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

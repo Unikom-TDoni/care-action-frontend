@@ -5,10 +5,11 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
-import android.graphics.BitmapFactory
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toBitmap
 import edu.rpl.careaction.R
 
 class NotificationGenerator(
@@ -47,10 +48,11 @@ class NotificationGenerator(
             .build()
     )
 
-    fun showNotification() =
+    fun showNotification() {
         notifications.entries.random().also {
             NotificationManagerCompat.from(context).notify(it.key, it.value)
         }
+    }
 
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -68,13 +70,8 @@ class NotificationGenerator(
 
     private fun generateDefaultBuilder() =
         NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_launcher_foreground)
-            .setLargeIcon(
-                BitmapFactory.decodeResource(
-                    context.resources,
-                    R.mipmap.ic_launcher
-                )
-            )
+            .setSmallIcon(R.drawable.ic_small_notification)
+            .setLargeIcon(ContextCompat.getDrawable(context, R.mipmap.ic_launcher)?.toBitmap())
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
 }

@@ -12,24 +12,24 @@ data class UserUpdateResponse(
     )
 
     data class Data(
-        val name: String,
         val height: Int,
         val weight: Int,
+        val name: String,
         val gender: String,
         val picture: String,
         val birthdate: Date,
     )
-}
 
-fun UserUpdateResponse.toUser(activeUser: User): User =
-    User(
-        DateUtility.generateAgeFromDate(content.data.birthdate),
-        content.data.height,
-        content.data.weight,
-        content.data.name,
-        activeUser.email,
-        activeUser.token,
-        content.data.gender,
-        content.data.picture,
-        content.data.birthdate,
-    )
+    fun toUser(activeUser: User): User =
+        User(
+            DateUtility.generateAgeFromDate(content.data.birthdate),
+            content.data.height,
+            content.data.weight,
+            content.data.name,
+            activeUser.email,
+            activeUser.token,
+            content.data.gender,
+            content.data.picture,
+            content.data.birthdate,
+        )
+}

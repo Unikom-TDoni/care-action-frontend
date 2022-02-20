@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="green">#16C79A</color>
+    <color name="light_green">#E8FAF5</color>
     <color name="red">#FF6961</color>
     <color name="grey">#F5F4F9</color>
     <color name="black_grey">#7B6F72</color>

@@ -32,7 +32,7 @@ import edu.rpl.careaction.feature.user.presentation.validation.profile.update.Up
 import edu.rpl.careaction.feature.user.presentation.validation.profile.update.UpdateProfileFormValidation
 import edu.rpl.careaction.module.api.ApiCallback
 import edu.rpl.careaction.module.api.ApiResult
-import edu.rpl.careaction.module.ui.ViewBindingFragment
+import edu.rpl.careaction.module.presentation.ViewBindingFragment
 import edu.rpl.careaction.module.validation.FormValidationCallback
 import edu.rpl.careaction.module.validation.FormValidationResult
 import kotlinx.coroutines.flow.collect
@@ -171,6 +171,7 @@ class UpdateProfileViewBindingFragment : ViewBindingFragment<FragmentUpdateProfi
         ApiCallback(
             successCallback = {
                 DefaultApiCallbackUtility.successCallback()
+
                 binding.image.tag = null
                 binding.txtFieldName.setText(it.response.name)
                 binding.txtFieldHeight.setText(it.response.height.toString())

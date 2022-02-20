@@ -11,7 +11,7 @@
     <dimen name="card_rectangle_medium_height">160dp</dimen>
     <dimen name="card_rectangle_large_height">240dp</dimen>
     <dimen name="card_default_padding">12dp</dimen>
-    <dimen name="card_big_padding">20dp</dimen>
+    <dimen name="card_big_padding">18dp</dimen>
     <dimen name="card_default_corner_radius">8dp</dimen>
 
     <!-- Space -->
@@ -22,16 +22,21 @@
     <dimen name="medium_space">24dp</dimen>
     <dimen name="large_space">28dp</dimen>
     <dimen name="extra_extra_large_space">36dp</dimen>
-    <dimen name="bottom_nav_menu_space">90dp</dimen>
-
+    <dimen name="bottom_nav_menu_space">65dp</dimen>
 
     <!--Text Fields-->
     <dimen name="txt_field_min_height">48dp</dimen>
     <dimen name="txt_field_drawable_start_space">12dp</dimen>
+    <dimen name="txt_field_thickness_width">1dp</dimen>
 
     <!-- Button -->
+    <dimen name="btn_fab_size">55dp</dimen>
+    <dimen name="btn_default_padding">0dp</dimen>
     <dimen name="btn_fab_margin_size">32dp</dimen>
     <dimen name="btn_fab_progress_size">90dp</dimen>
+    <dimen name="btn_fab_max_image_size">30dp</dimen>
+    <dimen name="btn_fab_content_margin_size">116dp</dimen>
+    <dimen name="btn_fab_progress_thickness">4dp</dimen>
 
     <!-- Text -->
     <dimen name="txt_extra_tiny_size">12sp</dimen>
